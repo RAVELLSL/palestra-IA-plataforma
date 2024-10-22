@@ -186,10 +186,16 @@ nav a:hover {
     }
 
     /* Estilos para a seção Material para Download */
+    #material {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
     #material div {
-        display: grid;
-        grid-template-columns: 1fr; /* Exibe uma coluna em telas menores */
-        gap: 20px; /* Espaçamento entre os cards */
+        display: block;
+        width: 100%; /* Ajustar largura completa em dispositivos móveis */
+        text-align: center;
     }
 }
 
@@ -238,10 +244,16 @@ nav a:hover {
     }
 
     /* Ajuste para a seção Material para Download */
-    #material div {
-        display: grid;
-        grid-template-columns: 1fr; /* Exibe uma coluna em telas menores */
+    #material {
+        display: flex;
+        flex-direction: column;
         gap: 20px; /* Espaçamento entre os cards */
+    }
+
+    #material div {
+        display: block;
+        width: 100%; /* Fazer os cards ocuparem 100% da largura */
+        text-align: center;
     }
 }
 

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Palestra: Explorando a IA - o futuro em nossas mãos!</title>
     <style>
-        /* Estilos Globais */
+    /* Estilos Globais */
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
@@ -184,6 +184,13 @@ nav a:hover {
         width: 150px; /* Garantir o tamanho adequado da imagem */
         height: 150px;
     }
+
+    /* Estilos para a seção Material para Download */
+    #material div {
+        display: grid;
+        grid-template-columns: 1fr; /* Exibe uma coluna em telas menores */
+        gap: 20px; /* Espaçamento entre os cards */
+    }
 }
 
 @media only screen and (max-width: 480px) {
@@ -228,6 +235,12 @@ nav a:hover {
     /* Centralização do rodapé em telas menores */
     footer p {
         text-align: center; /* Centralizar o texto do rodapé */
+    }
+
+    /* Ajuste para a seção Material para Download */
+    #material div {
+        display: grid;
+        grid-template-columns: 1fr; /* Exibe uma coluna em telas menores */
     }
 }
 

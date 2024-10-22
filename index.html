@@ -124,6 +124,30 @@ nav a:hover {
     }
 }
 
+/* Estilos para Material para Acesso e Download */
+.material-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 colunas em telas grandes */
+    gap: 20px; /* Espaçamento entre os cards */
+}
+
+.material-card {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.material-card h3 {
+    color: #00796b;
+}
+
+.material-card:hover {
+    transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
+}
+
 /* Estilos para dispositivos móveis */
 @media only screen and (max-width: 768px) {
     .menu-toggle {
@@ -185,17 +209,10 @@ nav a:hover {
         height: 150px;
     }
 
-    /* Estilos para a seção Material para Download */
-    #material {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    #material div {
-        display: block;
-        width: 100%; /* Ajustar largura completa em dispositivos móveis */
-        text-align: center;
+    /* Ajuste para Material para Acesso e Download */
+    .material-grid {
+        grid-template-columns: 1fr; /* 1 coluna em telas menores */
+        gap: 20px; /* Espaçamento entre os cards */
     }
 }
 
@@ -242,19 +259,6 @@ nav a:hover {
     footer p {
         text-align: center; /* Centralizar o texto do rodapé */
     }
-
-    /* Ajuste para a seção Material para Download */
-    #material {
-        display: flex;
-        flex-direction: column;
-        gap: 20px; /* Espaçamento entre os cards */
-    }
-
-    #material div {
-        display: block;
-        width: 100%; /* Fazer os cards ocuparem 100% da largura */
-        text-align: center;
-    }
 }
 
     </style>
@@ -292,47 +296,47 @@ nav a:hover {
         
     </div>
 
-    <!-- Seção Material para Acesso e Download -->
 <div class="section" id="material">
     <h2>Material para Acesso e Download</h2>
-    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
-        <a href="https://ravellsl.github.io/Palestra-explorando-a-IA/" target="_blank" style="text-decoration: none;">
-            <div style="background-color: #f0f0f0; border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: transform 0.3s;">
-                <h3 style="color: #00796b;">Apresentação</h3>
+    <div class="material-grid">
+        <a href="https://ravellsl.github.io/Palestra-explorando-a-IA/" target="_blank">
+            <div class="material-card">
+                <h3>Apresentação</h3>
             </div>
         </a>
-        <a href="https://ravellsl.github.io/guia-prompt/" target="_blank" style="text-decoration: none;">
-            <div style="background-color: #f0f0f0; border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: transform 0.3s;">
-                <h3 style="color: #00796b;">Desenvolvimento de Prompt</h3>
+        <a href="https://ravellsl.github.io/guia-prompt/" target="_blank">
+            <div class="material-card">
+                <h3>Desenvolvimento de Prompt</h3>
             </div>
         </a>
-        <a href="https://ravellsl.github.io/material-complementar-sistema-integrado-tecnologias-coditianas/" target="_blank" style="text-decoration: none;">
-            <div style="background-color: #f0f0f0; border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: transform 0.3s;">
-                <h3 style="color: #00796b;">Sistema Integrado de Tecnologias Cotidianas</h3>
+        <a href="https://ravellsl.github.io/material-complementar-sistema-integrado-tecnologias-coditianas/" target="_blank">
+            <div class="material-card">
+                <h3>Sistema Integrado de Tecnologias Cotidianas</h3>
             </div>
         </a>
-        <a href="https://drive.google.com/file/d/1sCCch0kPcmxyyf5P2gMqPUq4KWip29c9/view?usp=sharing" target="_blank" style="text-decoration: none;">
-            <div style="background-color: #f0f0f0; border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: transform 0.3s;">
-                <h3 style="color: #00796b;">Programa da Palestra</h3>
+        <a href="https://drive.google.com/file/d/1sCCch0kPcmxyyf5P2gMqPUq4KWip29c9/view?usp=sharing" target="_blank">
+            <div class="material-card">
+                <h3>Programa da Palestra</h3>
             </div>
         </a>
-        <a href="https://drive.google.com/file/d/1hDXgmTnHVkbhLJY4D-ejDlzb0HPDg1Qw/view?usp=drive_link" target="_blank" style="text-decoration: none;">
-            <div style="background-color: #f0f0f0; border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: transform 0.3s;">
-                <h3 style="color: #00796b;">Revoluções Industriais</h3>
+        <a href="https://drive.google.com/file/d/1hDXgmTnHVkbhLJY4D-ejDlzb0HPDg1Qw/view?usp=drive_link" target="_blank">
+            <div class="material-card">
+                <h3>Revoluções Industriais</h3>
             </div>
         </a>
-        <a href="https://drive.google.com/file/d/1HBUEUj9jiQFVdY9Vklc63wcgSJmQVex-/view?usp=drive_link" target="_blank" style="text-decoration: none;">
-            <div style="background-color: #f0f0f0; border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: transform 0.3s;">
-                <h3 style="color: #00796b;">Bases Tecnológicas</h3>
+        <a href="https://drive.google.com/file/d/1HBUEUj9jiQFVdY9Vklc63wcgSJmQVex-/view?usp=drive_link" target="_blank">
+            <div class="material-card">
+                <h3>Bases Tecnológicas</h3>
             </div>
         </a>
-        <a href="https://drive.google.com/file/d/1eaoq6Bgl6WwfRciHoqK25pSdEHvd3pFz/view?usp=sharing" target="_blank" style="text-decoration: none;">
-            <div style="background-color: #f0f0f0; border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: transform 0.3s;">
-                <h3 style="color: #00796b;">Tipos de IA</h3>
+        <a href="https://drive.google.com/file/d/1eaoq6Bgl6WwfRciHoqK25pSdEHvd3pFz/view?usp=sharing" target="_blank">
+            <div class="material-card">
+                <h3>Tipos de IA</h3>
             </div>
         </a>
     </div>
 </div>
+
 
 <style>
     @media only screen and (max-width: 768px) {

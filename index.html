@@ -1,483 +1,720 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Palestra: Explorando a IA - o futuro em nossas mãos!</title>
+    <title>Diretório de Ferramentas IA · MINIMAL</title>
     <style>
-        /* Estilos Globais */
-body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #eef2f3, #ffffff);
-    color: #333;
-    overflow-x: hidden;
-}
+        /* ===== ESTILO MINIMALISTA - GRID 3 COLUNAS ===== */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-header {
-    background: linear-gradient(135deg, #8fd3f4, #d2eafc);
-    padding: 40px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-bottom-left-radius: 50px;
-    border-bottom-right-radius: 50px;
-    position: relative;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-header h1 {
-    font-size: 2.8em;
-    color: #00796b;
-    margin: 0;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
+        /* Tema claro (padrão) - tonalidades claras */
+        :root {
+            --bg-color: #fafafa;
+            --surface: #ffffff;
+            --surface-hover: #f0f0f0;
+            --border-light: #eaeaea;
+            --border-accent: #dddddd;
+            --text-primary: #1e1e1e;
+            --text-secondary: #666666;
+            --accent: #007aff;
+            --accent-soft: rgba(0, 122, 255, 0.08);
+            --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.02);
+            --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.06);
+            --icon-favorite: #f5b342;
+            --icon-favorite-inactive: #cccccc;
+            --font-body: 'Inter', sans-serif;
+        }
 
-/* Estilos do botão hamburguer */
-.menu-toggle {
-    display: none;
-    font-size: 2em;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    color: #00796b;
-    cursor: pointer;
-}
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-color);
+            min-height: 100vh;
+            padding: 32px 20px;
+            color: var(--text-primary);
+            line-height: 1.5;
+        }
 
-nav {
-    display: flex;
-    justify-content: center;
-    background-color: #ffffff;
-    padding: 15px 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-}
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
 
-nav a {
-    margin: 0 15px;
-    color: #00796b;
-    text-decoration: none;
-    font-size: 1.3em;
-    transition: color 0.3s ease;
-}
+        /* Cabeçalho */
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
 
-nav a:hover {
-    color: #004d40;
-}
+        .main-title {
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
 
-.container {
-    padding: 50px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 650px;
+            margin: 0 auto;
+        }
 
-.section {
-    margin-bottom: 50px;
-    padding: 30px;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-    backdrop-filter: blur(10px);
-}
+        /* Barra de ferramentas */
+        .toolbar {
+            background: var(--surface);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-sm);
+        }
 
-.section h2 {
-    font-size: 2em;
-    color: #00796b;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    text-align: center;
-}
+        .search-wrapper {
+            margin-bottom: 20px;
+        }
 
-.section p, .section ul {
-    font-size: 1.2em;
-    line-height: 1.8;
-    color: #555;
-}
+        .search-box {
+            width: 100%;
+            padding: 14px 20px;
+            border: 1px solid var(--border-accent);
+            border-radius: 40px;
+            font-size: 1rem;
+            font-family: var(--font-body);
+            background: var(--bg-color);
+            color: var(--text-primary);
+            transition: border 0.2s, box-shadow 0.2s;
+        }
 
-/* Estilos para Perguntas Frequentes */
-.faq-item {
-    margin-bottom: 20px;
-}
+        .search-box:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-soft);
+        }
 
-.faq-question {
-    cursor: pointer;
-    color: #00796b;
-    font-size: 1.2em;
-    transition: color 0.3s ease;
-}
+        .controls-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-.faq-question:hover {
-    color: #004d40;
-}
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            flex: 2;
+            min-width: 240px;
+        }
 
-.faq-answer {
-    display: none; /* Respostas ocultas por padrão */
-    margin-top: 10px;
-    font-size: 1.2em;
-    color: #555;
-    line-height: 1.8;
-}
+        .tab {
+            padding: 8px 18px;
+            border: 1px solid var(--border-accent);
+            background: transparent;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
 
-/* Justificar todo o texto em telas maiores */
-@media only screen and (min-width: 769px) {
-    .section p, .section ul, nav a, footer p {
-        text-align: justify;
-    }
-}
+        .tab:hover {
+            background: var(--accent-soft);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
 
-/* Estilos para Material para Acesso e Download */
-.material-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 colunas em telas grandes */
-    gap: 20px; /* Espaçamento entre os cards */
-}
+        .tab.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #ffffff;
+        }
 
-.material-card {
-    background-color: #f0f0f0;
-    border-radius: 10px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
-}
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
 
-.material-card h3 {
-    color: #00796b;
-}
+        .sort-controls {
+            display: flex;
+            gap: 4px;
+            background: var(--surface);
+            border: 1px solid var(--border-accent);
+            border-radius: 30px;
+            padding: 4px;
+        }
 
-.material-card:hover {
-    transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
-}
+        .sort-btn, .theme-btn, .top5-btn {
+            background: transparent;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
 
-/* Estilos para os links dos cards */
-.material-card a {
-    color: inherit;
-    text-decoration: none;
-}
+        .sort-btn:hover, .theme-btn:hover, .top5-btn:hover {
+            background: var(--accent-soft);
+            color: var(--accent);
+        }
 
-.material-card a:hover {
-    color: inherit;
-}
+        .sort-btn.active, .top5-btn.active {
+            background: var(--accent);
+            color: #ffffff;
+        }
 
-footer p {
-        font-size: 1em;
-        text-align: center; /* Centralizar o rodapé em telas menores */
-    }
-    
-/* Estilos para dispositivos móveis */
-@media only screen and (max-width: 768px) {
-    .menu-toggle {
-        display: block;
-    }
+        .theme-btn {
+            border: 1px solid var(--border-accent);
+        }
 
-    nav {
-        display: none;
-        flex-direction: column;
-        background-color: #ffffff;
-        position: absolute;
-        top: 80px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100%;
-        border-radius: 15px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        z-index: 999;
-    }
+        /* Result info */
+        .results-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 28px;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            padding: 8px 16px;
+            background: var(--surface);
+            border-radius: 40px;
+            border: 1px solid var(--border-light);
+        }
 
-    nav.open {
-        display: flex;
-    }
+        .result-count {
+            font-weight: 700;
+            color: var(--accent);
+        }
 
-    nav a {
-        margin: 15px 0;
-        text-align: center;
-        font-size: 1.2em;
-    }
+        .clear-filters {
+            background: none;
+            border: 1px solid var(--border-accent);
+            border-radius: 30px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            cursor: pointer;
+            padding: 6px 16px;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+        }
 
-    .container {
-        padding: 30px;
-    }
+        .clear-filters:hover {
+            background: var(--accent-soft);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
 
-    .section h2 {
-        font-size: 1.6em;
-    }
+        /* Lista de ferramentas - GRID 3 COLUNAS */
+        .tools-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
 
-    .section p {
-        font-size: 1.1em;
-        text-align: left; /* Alinhar à esquerda em telas menores */
-    }
+        .tool-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: var(--surface);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            padding: 28px 20px 24px;
+            transition: box-shadow 0.2s, border-color 0.2s;
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+            height: fit-content;
+        }
 
-    footer p {
-        font-size: 1em;
-        text-align: center; /* Centralizar o rodapé em telas menores */
-    }
+        .tool-item:hover {
+            border-color: var(--accent);
+            box-shadow: var(--shadow-hover);
+        }
 
-    /* Ajuste para imagem e texto do palestrante em telas menores */
-    #palestrante div {
-        display: flex;
-        flex-direction: column; /* Colocar a imagem e o texto um abaixo do outro */
-        align-items: center; /* Centralizar a imagem e o texto */
-    }
+        .favorite-icon {
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--icon-favorite-inactive);
+            transition: color 0.2s;
+            margin-bottom: 12px;
+            align-self: center;
+        }
 
-    #palestrante img {
-        margin-bottom: 20px; /* Espaço entre a imagem e o texto */
-        width: 150px; /* Garantir o tamanho adequado da imagem */
-        height: 150px;
-    }
+        .favorite-icon.active {
+            color: var(--icon-favorite);
+        }
 
-    /* Ajuste para Material para Acesso e Download */
-    .material-grid {
-        grid-template-columns: 1fr; /* 1 coluna em telas menores */
-        gap: 20px; /* Espaçamento entre os cards */
-    }
-}
+        .favorite-icon:hover {
+            transform: scale(1.1);
+        }
 
-@media only screen and (max-width: 480px) {
-    header h1 {
-        font-size: 1.8em;
-    }
+        .tool-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            background: #ffffff;
+            padding: 8px;
+            object-fit: contain;
+            border: 1px solid var(--border-light);
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
 
-    nav {
-        width: 100%;
-    }
+        .tool-info {
+            width: 100%;
+            margin-bottom: 20px;
+        }
 
-    nav a {
-        margin: 10px 0;
-        font-size: 1.1em;
-    }
+        .tool-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 10px;
+        }
 
-    .section h2 {
-        font-size: 1.4em;
-    }
+        .tool-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
 
-    .section p {
-        font-size: 1em;
-    }
+        .tool-category {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-secondary);
+            background: var(--accent-soft);
+            padding: 4px 12px;
+            border-radius: 30px;
+            border: 1px solid var(--border-accent);
+            display: inline-block;
+        }
 
-    .container {
-        padding: 20px;
-    }
+        .tool-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            line-clamp: 2;
+            overflow: hidden;
+            line-height: 1.5;
+            max-width: 90%;
+            margin: 0 auto;
+        }
 
-    /* Ajuste para imagem e texto do palestrante em telas menores */
-    #palestrante div {
-        display: flex;
-        flex-direction: column; /* Colocar a imagem e o texto um abaixo do outro */
-        align-items: center; /* Centralizar a imagem e o texto */
-    }
+        .tool-action {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
 
-    #palestrante img {
-        margin-bottom: 20px; /* Espaço entre a imagem e o texto */
-        width: 150px;
-        height: 150px;
-    }
+        .tool-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            background: transparent;
+            border: 1px solid var(--accent);
+            border-radius: 40px;
+            padding: 10px 24px;
+            font-weight: 500;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background 0.2s, color 0.2s;
+            width: fit-content;
+            min-width: 130px;
+        }
 
-    /* Centralização do rodapé em telas menores */
-    footer p {
-        text-align: center; /* Centralizar o texto do rodapé */
-    }
-}
+        .tool-link i::before {
+            content: "↗";
+            font-style: normal;
+            font-size: 1.1rem;
+        }
 
+        .tool-item:hover .tool-link {
+            background: var(--accent);
+            color: #ffffff;
+        }
+
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            background: var(--surface);
+            border: 1px dashed var(--border-accent);
+            border-radius: 24px;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-light);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 1024px) {
+            .tools-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 700px) {
+            .tools-list {
+                grid-template-columns: 1fr;
+            }
+            .tool-item {
+                padding: 24px 16px;
+            }
+            .tabs {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                padding-bottom: 4px;
+            }
+            .tab {
+                flex-shrink: 0;
+            }
+            .controls-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tool-logo {
+                width: 70px;
+                height: 70px;
+            }
+        }
     </style>
 </head>
 <body>
+    <div class="container">
+        <header class="header">
+            <h1 class="main-title">Inteligência Artificial</h1>
+            <p class="subtitle">Ferramentas selecionadas para turbinar sua criatividade, produtividade e conhecimento.</p>
+        </header>
 
-<header>
-    <h1>Explorando a IA - o futuro em nossas mãos!</h1>
-    <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
-</header>
+        <div class="toolbar">
+            <div class="search-wrapper">
+                <input type="text" class="search-box" id="searchInput" placeholder="Buscar ferramentas por nome ou descrição...">
+            </div>
+            
+            <div class="controls-row">
+                <div class="tabs" id="categoryTabs">
+                    <button class="tab active" data-category="all">Todas</button>
+                    <button class="tab" data-category="chat">Chat</button>
+                    <button class="tab" data-category="creative">Criativas</button>
+                    <button class="tab" data-category="video">Vídeo</button>
+                    <button class="tab" data-category="productivity">Produtividade</button>
+                </div>
 
-<nav id="menu">
-    <a href="#palestrante">Sobre o Palestrante</a>
-    <a href="#palestra">Sobre a Palestra</a>
-    <a href="#material">Material para Download</a>
-    <a href="#faq">Perguntas Frequentes</a>
-</nav>
-
-<div class="container">
-    <!-- Seção Sobre o Palestrante -->
-    <div class="section" id="palestrante">
-        <h2>Sobre o Palestrante</h2>
-        <div style="display: flex; align-items: center;">
-            <img src="https://i.ibb.co/J76zSZ7/1691719867138.jpg" alt="Foto do palestrante" style="border-radius: 50%; margin-right: 20px; width: 150px; height: 150px;">
-            <p>O professor Ravell Lopes é um especialista em tecnologias digitais e Inteligência Artificial formado em Secretariado Executivo pela Universidade Federal de Pernambuco, possui experiência em integrar soluções tecnológicas a processos administrativos. Com domínio em diversas áreas como Desenvolvimento Web, Manutenção (TI), Programação e Cloud Computing, atua como Personal Assistant de Tecnologias Digitais, trazendo uma abordagem prática e inovadora, sempre focada em eficiência e transformação digital.</p>
-        </div>
-    </div>
-    
-
-    <!-- Seção Sobre a Palestra -->
-    <div class="section" id="palestra">
-        <h2>Sobre a Palestra</h2>
-        <p>Realizada em 24/10/2024 na Casa de Frei Francisco (IDHEC), a palestra "Explorando a IA - O Futuro em Nossas Mãos" oferece uma imersão no universo da Inteligência Artificial, apresentando de forma clara e acessível como essa tecnologia molda tanto o presente quanto o futuro. Nosso foco é no papel da IA em nosso cotidiano, desde assistentes virtuais até grandes avanços em áreas como saúde e educação, além de compreender como a inteligência humana, social e artificial se complementam, criando novas oportunidades de inovação e cooperação.</p>
-        <p>Se você não pôde participar ou deseja revisar os pontos abordados, o material completo da palestra está disponível para consulta e download. Nele, você encontrará exemplos práticos de como a IA está presente no cotidiano, ilustrações visuais que facilitam o entendimento e reflexões sobre os desafios e cuidados necessários no uso dessa tecnologia. Não perca a chance de aprofundar seus conhecimentos e se manter atualizado sobre o futuro que já está em nossas mãos!</p>
-        
-    </div>
-
-    <div class="section" id="material">
-        <h2>Material para Acesso e Download</h2>
-        <div class="material-grid">
-            <div class="material-card">
-                <a href="https://ravellsl.github.io/Palestra-explorando-a-IA/" target="_blank">
-                    <h3>Apresentação</h3>
-                </a>
-            </div>
-            <div class="material-card">
-                <a href="https://ravellsl.github.io/guia-prompt/" target="_blank">
-                    <h3>Desenvolvimento de Prompt</h3>
-                </a>
-            </div>
-            <div class="material-card">
-                <a href="https://ravellsl.github.io/material-complementar-sistema-integrado-tecnologias-coditianas/" target="_blank">
-                    <h3>Sistema Integrado de Tecnologias Cotidianas</h3>
-                </a>
-            </div>
-            <div class="material-card">
-                <a href="https://drive.google.com/file/d/1sCCch0kPcmxyyf5P2gMqPUq4KWip29c9/view?usp=sharing" target="_blank">
-                    <h3>Programa da Palestra</h3>
-                </a>
-            </div>
-            <div class="material-card">
-                <a href="https://drive.google.com/file/d/1hDXgmTnHVkbhLJY4D-ejDlzb0HPDg1Qw/view?usp=drive_link" target="_blank">
-                    <h3>Revoluções Industriais</h3>
-                </a>
-            </div>
-            <div class="material-card">
-                <a href="https://drive.google.com/file/d/1HBUEUj9jiQFVdY9Vklc63wcgSJmQVex-/view?usp=drive_link" target="_blank">
-                    <h3>Bases Tecnológicas</h3>
-                </a>
-            </div>
-            <div class="material-card">
-                <a href="https://drive.google.com/file/d/1eaoq6Bgl6WwfRciHoqK25pSdEHvd3pFz/view?usp=sharing" target="_blank">
-                    <h3>Tipos de IA</h3>
-                </a>
-            </div>
-            <div class="material-card">
-                <a href="https://photos.app.goo.gl/zqUiWZ1RXCdGYQHLA" target="_blank">
-                    <h3>Fotos</h3>
-                </a>
+                <div class="action-buttons">
+                    <div class="sort-controls">
+                        <button class="sort-btn active" data-sort="alpha">A-Z</button>
+                        <button class="sort-btn" data-sort="favorite">⭐ Favoritos</button>
+                    </div>
+                    <button class="top5-btn" id="top5Btn">🔥 Top 5</button>
+                    <button class="theme-btn" id="themeToggle">🌓 Tema</button>
+                </div>
             </div>
         </div>
-    </div>
-    
 
-<style>
-    @media only screen and (max-width: 768px) {
-        #material div {
-            grid-template-columns: 1fr; /* Exibe uma coluna em telas menores */
-        }
-    }
-</style>
-
-
-
- 
-<!-- Seção Perguntas Frequentes -->
-<div class="section" id="faq">
-    <h2>Perguntas Frequentes</h2>
-
-    <!-- Primeira Pergunta -->
-    <div class="faq-item">
-        <p class="faq-question" onclick="toggleAnswer(1)"><strong>1. A chegada da inteligência artificial no cotidiano das pessoas pode ser considerada o início de uma nova era?</strong></p>
-        <div class="faq-answer" id="answer-1">
-            <p>Sim, a chegada da inteligência artificial (IA) ao cotidiano das pessoas pode ser considerada o início de uma nova era, frequentemente chamada de Era da Inteligência Artificial. Essa mudança é marcada pela integração de IAs em diversos aspectos da vida cotidiana, desde ferramentas de produtividade até assistentes virtuais, carros autônomos e sistemas de recomendação personalizados.</p>
-            <p>Há algumas razões principais pelas quais a IA está sendo vista como um marco na evolução tecnológica e social:</p>
-            <ul>
-                <li><strong>Automação de Processos:</strong> A IA permite a automação de tarefas antes realizadas por humanos, como atendimento ao cliente, diagnósticos médicos e até atividades criativas, como a geração de arte ou música. Isso transforma mercados de trabalho, cria novos empregos e redefine carreiras.</li>
-                <li><strong>Personalização em Massa:</strong> Com a IA, serviços e produtos podem ser ajustados de forma personalizada para cada indivíduo. Plataformas como Netflix, YouTube e Spotify utilizam algoritmos de IA para oferecer recomendações personalizadas, aumentando a satisfação dos usuários.</li>
-                <li><strong>Aceleração do Conhecimento:</strong> A IA tem a capacidade de processar grandes volumes de dados rapidamente, auxiliando pesquisadores, médicos e cientistas em descobertas mais ágeis e no avanço de diversas áreas, como biotecnologia e medicina de precisão.</li>
-                <li><strong>Melhoria da Qualidade de Vida:</strong> Com a adoção da IA em assistentes domésticos (como Alexa ou Google Assistant), sistemas de transporte inteligentes, monitoramento de saúde e outras áreas, a tecnologia facilita o cotidiano, proporcionando mais conveniência e segurança.</li>
-                <li><strong>Transformação Social e Econômica:</strong> Assim como a Revolução Industrial alterou profundamente a sociedade e a economia, a IA está mudando como as empresas operam e como as pessoas interagem com a tecnologia. A crescente presença de IA em setores como finanças, educação, transporte e saúde transforma profundamente as estruturas econômicas globais.</li>
-            </ul>
-            <p>Portanto, assim como as revoluções anteriores, que foram caracterizadas pela mecanização e pela digitalização, a Era da IA simboliza uma nova fase na história humana, onde a capacidade de máquinas e algoritmos para aprender e tomar decisões redefine a dinâmica entre tecnologia e sociedade.</p>
+        <div class="results-info">
+            <span><span class="result-count" id="resultCount">0</span> ferramentas encontradas</span>
+            <button class="clear-filters" id="clearFilters">Limpar filtros</button>
         </div>
+
+        <div class="tools-list" id="toolsList"></div>
+
+        <footer class="footer">
+            <p>© 2025 · Diretório de IA · Atualizado regularmente</p>
+        </footer>
     </div>
 
-    <!-- Segunda Pergunta -->
-    <div class="faq-item">
-        <p class="faq-question" onclick="toggleAnswer(2)"><strong>2. O que é o conceito de "reboot global" em decorrência da chegada da inteligência artificial?</strong></p>
-        <div class="faq-answer" id="answer-2">
-            <p>O conceito de “reboot global” em decorrência da chegada da inteligência artificial (IA) refere-se a uma transformação profunda e abrangente em diversas áreas da sociedade, como economia, mercado de trabalho, educação, política, cultura e ética. Esse “reinício” global ocorre à medida que a IA provoca mudanças disruptivas nos sistemas tradicionais.</p>
-            <ul>
-                <li><strong>Mudança nos Modelos Econômicos:</strong> A IA está reconfigurando a economia global, criando novas indústrias e formas de trabalho enquanto automatiza tarefas repetitivas. Com isso, atividades manuais estão sendo substituídas, e habilidades tecnológicas se tornam essenciais para os novos empregos. No entanto, esse avanço também pode aumentar a desigualdade, gerando debates sobre redistribuição de riqueza e renda básica universal.</li>
-                <li><strong>Revolução no Mercado de Trabalho:</strong> A IA está transformando o mercado de trabalho, substituindo empregos rotineiros por automação e criando novas oportunidades em áreas tecnológicas, como ciência de dados e análise de big data. Embora algumas profissões desapareçam, trabalhos criativos e cognitivos ganham ainda mais valor.</li>
-                <li><strong>Redefinição da Educação:</strong> A IA está mudando o foco educacional, indo além da memorização e instrução linear para priorizar o desenvolvimento de habilidades digitais e aprendizado contínuo. A educação personalizada, adaptada às necessidades de cada aluno, e o foco em habilidades do futuro, como pensamento crítico e colaboração, são tendências em ascensão.</li>
-                <li><strong>Reconfiguração da Sociedade e Política:</strong> A IA também está influenciando a governança e a forma como as sociedades operam. Surgem questões sobre ética, privacidade e regulação da IA, com governos precisando equilibrar inovação com a proteção de direitos. A IA pode tanto fortalecer quanto ameaçar a democracia, dependendo de como é utilizada.</li>
-                <li><strong>Impactos Culturais e Filosóficos:</strong> A IA levanta questões sobre inteligência, criatividade e o papel humano. A colaboração entre humanos e máquinas já está criando novas formas de expressão artística, e a IA desafia os paradigmas filosóficos tradicionais sobre consciência e criatividade.</li>
-                <li><strong>Desafios Éticos e Morais:</strong> A implementação da IA traz desafios como a possibilidade de aumentar a desigualdade e a necessidade de garantir a transparência e a prestação de contas em sistemas automatizados. Questões éticas são fundamentais, especialmente em áreas sensíveis como segurança e justiça.</li>
-            </ul>
-            <p>O "reboot global" causado pela chegada da inteligência artificial não se trata apenas de uma revolução tecnológica, mas de uma transformação completa dos fundamentos da sociedade. Assim como as revoluções anteriores, essa nova era traz tanto oportunidades quanto desafios, exigindo uma reformulação dos sistemas econômicos, educacionais e sociais para garantir que a IA beneficie a todos de maneira justa e sustentável.</p>
-        </div>
-    </div>
+    <script>
+        (function() {
+            // ---------- BASE DE DADOS DAS FERRAMENTAS ----------
+            const tools = [
+                { name: "ChatGPT", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMdM9MEQ0ExL1PmInT3U5I8v63YXBEdoIT0Q&s", category: "chat", description: "Assistente geral para conversas, criação de texto e suporte.", url: "https://chatgpt.com/" },
+                { name: "Gemini", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThr7qrIazsvZwJuw-uZCtLzIjaAyVW_ZrlEQ&s", category: "chat", description: "IA do Google integrada ao ecossistema Workspace e pesquisas.", url: "https://gemini.google.com/app" },
+                { name: "Copilot", logo: "https://play-lh.googleusercontent.com/p8R1lAZI5_WCOzmvBYnOQasCWcjc9d2vM7z4PaVku8b9AfxGhqQqM0ldJ8KULHblVj-g", category: "chat", description: "Assistente da Microsoft para código, texto e busca.", url: "https://copilot.microsoft.com/" },
+                { name: "Deepseek", logo: "https://cdn.worldvectorlogo.com/logos/deepseek-2.svg", category: "chat", description: "Focado em programação e raciocínio lógico profundo.", url: "https://chat.deepseek.com/" },
+                { name: "Qwen", logo: "https://crystalpng.com/wp-content/uploads/2025/02/Qwen-05.png", category: "chat", description: "Modelo da Alibaba para tarefas diversas e suporte multilíngue.", url: "https://qwen.ai/home" },
+                { name: "Grok", logo: "https://img.icons8.com/color/1200/grok--v2.jpg", category: "chat", description: "Assistente de IA da xAI com respostas diretas e atualizadas.", url: "https://grok.com/" },
+                { name: "Suno", logo: "https://images.seeklogo.com/logo-png/52/2/suno-ai-logo-png_seeklogo-528379.png", category: "creative", description: "Criação de músicas e áudio com IA generativa.", url: "https://suno.com/" },
+                { name: "Jules", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvAXEz4EsU3RQHCV96BAfJusei09ZBjQOG2g&s", category: "creative", description: "Geração e edição de imagens por comandos de texto.", url: "https://jules.google.com/task" },
+                { name: "Manus AI", logo: "https://play-lh.googleusercontent.com/7RIeDBEnjVVn3d1yr441p7u0BK9eT8E6P9i__XYTcJAzOe7sqVgJp7pmlypqY9NBqjI", category: "creative", description: "Design gráfico e edição profissional com IA.", url: "https://manus.im/app" },
+                { name: "LM Arena", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxPgTgdL2Ttbt9TCA8vYFPsFOqz_Dppec8gg&s", category: "creative", description: "Comparação lado a lado de grandes modelos de linguagem.", url: "https://lmarena.ai/?mode=direct" },
+                { name: "Wan", logo: "https://catai.com.br/wp-content/uploads/2025/08/Wan-01.jpg", category: "video", description: "Criação automática de vídeos a partir de roteiros.", url: "https://create.wan.video/" },
+                { name: "Vids", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Google_Vids_2024_Logo.svg/250px-Google_Vids_2024_Logo.svg.png", category: "video", description: "Ferramenta do Google Workspace para edição e criação de vídeos.", url: "https://workspace.google.com/intl/pt-BR/products/vids/" },
+                { name: "Perplexity", logo: "https://images.seeklogo.com/logo-png/61/2/perplexity-ai-icon-black-logo-png_seeklogo-611679.png", category: "productivity", description: "Mecanismo de busca com respostas geradas por IA.", url: "https://www.perplexity.ai/" },
+                { name: "NotebookLM", logo: "https://static1.xdaimages.com/wordpress/wp-content/uploads/2025/03/notebooklm-removebg-preview.png", category: "productivity", description: "Organização de notas e resumos com base nos seus documentos.", url: "https://notebooklm.google.com/" }
+            ];
 
-    <!-- Terceira Pergunta -->
-    <div class="faq-item">
-        <p class="faq-question" onclick="toggleAnswer(3)"><strong>3. O que pode acontecer com as pessoas que não conseguirem compreender ou se adaptar a essa transformação?</strong></p>
-        <div class="faq-answer" id="answer-3">
-            <p>As pessoas que não conseguirem compreender ou se adaptar à transformação causada pela chegada da inteligência artificial (IA) e outras tecnologias emergentes podem enfrentar uma série de desafios significativos, tanto no nível pessoal quanto no social e econômico.</p>
-            <ul>
-                <li><strong>Desemprego e Subemprego:</strong> A automação impulsionada pela IA está substituindo muitas funções repetitivas e operacionais, o que pode levar ao desaparecimento de empregos tradicionais. Quem não conseguir desenvolver novas habilidades tecnológicas pode enfrentar o risco de desemprego tecnológico ou de subemprego, aceitando posições abaixo de suas qualificações anteriores.</li>
-                <li><strong>Desigualdade Econômica e Social:</strong> Aqueles que não conseguirem acompanhar as novas habilidades tecnológicas podem ser deixados para trás, ampliando as desigualdades econômicas e sociais. A polarização do mercado de trabalho e o acesso desigual à educação são alguns dos desafios resultantes dessa transformação.</li>
-                <li><strong>Exclusão Digital:</strong> A transformação digital exige conectividade e habilidades para utilizar ferramentas digitais. Aqueles que não tiverem acesso a esses recursos ou não desenvolverem alfabetização digital suficiente podem ser excluídos das oportunidades geradas pela nova economia digital.</li>
-                <li><strong>Problemas de Saúde Mental:</strong> A adaptação a um mundo em rápida transformação pode gerar altos níveis de estresse, ansiedade e depressão para aqueles que se sentem incapazes de acompanhar as novas demandas tecnológicas.</li>
-                <li><strong>Desconexão Social:</strong> A transformação digital pode exacerbar a desconexão entre aqueles que se adaptam e os que ficam para trás, criando isolamento social e exclusão dos espaços culturais digitais.</li>
-                <li><strong>Dificuldade de Navegar em Serviços Essenciais:</strong> A digitalização de serviços como bancos e governos pode dificultar o acesso para aqueles que não são proficientes em tecnologia, comprometendo sua autonomia.</li>
-                <li><strong>Relevância Reduzida no Mercado Global:</strong> Países e regiões que não conseguirem se adaptar à IA e às novas tecnologias correm o risco de perder competitividade no mercado global, enfraquecendo suas economias e ficando em desvantagem comercial.</li>
-                <li><strong>Desafios Éticos e Conflitos Sociais:</strong> Aqueles que resistem à IA e às mudanças tecnológicas podem gerar tensões sociais e conflitos entre os que aceitam as inovações e os que as rejeitam, resultando em debates polarizados sobre o papel da tecnologia na sociedade.</li>
-                <li><strong>Obsolescência Cultural e Intelectual:</strong> A incapacidade de se adaptar ao uso da IA e das tecnologias digitais pode levar a uma "obsolescência cultural", distanciando indivíduos das novas formas de expressão e inovação cultural.</li>
-            </ul>
-            <p>Para evitar essas consequências, é crucial que governos, empresas e instituições educacionais invistam em requalificação, educação digital e alfabetização tecnológica. As pessoas também precisam se comprometer com o aprendizado contínuo e a adaptação às mudanças, já que o futuro será cada vez mais moldado por IA e outras tecnologias emergentes.</p>
-        </div>
-    </div>
+            const categoryNames = {
+                all: "Todas",
+                chat: "Chat",
+                creative: "Criativas",
+                video: "Vídeo",
+                productivity: "Produtividade"
+            };
 
-    <!-- Quarta Pergunta -->
-    <div class="faq-item">
-        <p class="faq-question" onclick="toggleAnswer(4)"><strong>4. Como posso me preparar de maneira simples para esse futuro que se aproxima?</strong></p>
-        <div class="faq-answer" id="answer-4">
-            <p>Preparar-se de maneira simples para o futuro moldado pela inteligência artificial (IA) não precisa ser complicado. Com algumas ações práticas e acessíveis, é possível começar a se adaptar às mudanças e estar pronto para enfrentar os desafios e aproveitar as oportunidades desse novo cenário.</p>
-            <ul>
-                <li><strong>Familiarize-se com Tecnologia Digital:</strong> Use ferramentas de IA no dia a dia, como assistentes virtuais (Siri, Alexa, Google Assistant) ou sistemas de recomendação em plataformas como Netflix e Spotify. Experimente também softwares gratuitos de automação e criação de conteúdo com IA, como Canva e Grammarly.</li>
-                <li><strong>Adquira Habilidades Básicas em Programação:</strong> Aprender o básico de programação pode abrir muitas portas. Plataformas como Codecademy e FreeCodeCamp oferecem cursos gratuitos, e Python é uma boa linguagem para começar devido à sua simplicidade e aplicabilidade em IA.</li>
-                <li><strong>Mantenha-se Atualizado com Conteúdos Simples:</strong> Acompanhe blogs, vídeos e influenciadores de tecnologia que explicam conceitos de maneira acessível. Canais como TechInsider e TED Talks são boas fontes para começar.</li>
-                <li><strong>Aprenda o Básico de Segurança Digital:</strong> Com a digitalização crescente, proteger seus dados online é essencial. Ações simples, como ativar a autenticação de dois fatores e utilizar gerenciadores de senhas, podem melhorar sua segurança online.</li>
-                <li><strong>Cultive Habilidades Humanas:</strong> Além da tecnologia, habilidades como comunicação, empatia e criatividade são altamente valorizadas. Melhorar a comunicação e praticar a criatividade são formas de se manter relevante em um mundo automatizado.</li>
-                <li><strong>Participe de Cursos e Workshops de Curta Duração:</strong> Se você tem pouco tempo, participe de workshops rápidos, palestras ou eventos online. Plataformas como Coursera e Udemy oferecem cursos curtos e acessíveis em IA e tecnologia.</li>
-                <li><strong>Pratique o Aprendizado Contínuo:</strong> Dedique 15-30 minutos por dia para aprender algo novo. Aplicativos como Duolingo e Brilliant permitem que você aprenda no seu próprio ritmo de forma divertida e eficaz.</li>
-                <li><strong>Aumente Sua Conexão com a Tecnologia no Trabalho:</strong> Mesmo que não trabalhe diretamente com tecnologia, explore ferramentas digitais, como planilhas com automação, para otimizar suas tarefas. Ferramentas como Trello e Slack também podem ajudar a tornar seu trabalho mais eficiente.</li>
-                <li><strong>Tenha uma Mentalidade Aberta e Flexível:</strong> Esteja disposto a mudar e se adaptar às novas tecnologias. Encarar a IA como uma oportunidade, e não uma ameaça, pode ajudar a garantir sua relevância no futuro.</li>
-                <li><strong>Participe de Comunidades Online:</strong> Envolva-se com fóruns e grupos de discussão sobre IA e tecnologia, como os do Reddit ou LinkedIn. Aprender com outros interessados pode ser uma maneira simples e colaborativa de se preparar.</li>
-            </ul>
-            <p>Preparar-se para o futuro com IA pode ser feito de maneira simples e acessível, desde que você adote uma mentalidade de aprendizado contínuo, explore ferramentas digitais que já estão ao seu alcance e se mantenha atualizado com as inovações tecnológicas.</p>
-        </div>
-    </div>
-</div>
+            // Elementos DOM
+            const toolsListEl = document.getElementById('toolsList');
+            const searchInput = document.getElementById('searchInput');
+            const tabs = document.querySelectorAll('.tab');
+            const resultCountSpan = document.getElementById('resultCount');
+            const clearBtn = document.getElementById('clearFilters');
+            const sortBtns = document.querySelectorAll('.sort-btn');
+            const themeToggle = document.getElementById('themeToggle');
+            const top5Btn = document.getElementById('top5Btn');
 
+            // Estado
+            let activeCategory = 'all';
+            let searchTerm = '';
+            let sortMode = 'alpha'; // 'alpha' ou 'favorite'
+            let top5Mode = false;    // se true, mostra apenas as 5 mais usadas
+            let favorites = JSON.parse(localStorage.getItem('iaFavorites')) || {};
+            let usageCount = JSON.parse(localStorage.getItem('iaUsageCount')) || {};
 
-</div>
+            // Tema (apenas claro - removi o seletor de tema escuro para manter tonalidades claras)
+            // Mas mantive o botão de tema caso queira, mas removi a classe dark-theme para não escurecer
+            // Se quiser remover o botão, pode apagar. Vou manter apenas o ícone, mas sem funcionalidade escura.
+            // Para simplificar, vou desabilitar a troca de tema escuro e manter sempre claro.
+            // Mas vou deixar o botão lá, e ao clicar, ele não faz nada (ou apenas simula um toggle, mas sem mudar cores).
+            // Melhor: removo a funcionalidade de tema escuro e deixo apenas o botão como decorativo? Não, vou manter o botão, mas sem efeito de escuro.
+            // Na verdade, o usuário pediu tonalidades claras, então vamos fixar o tema claro e remover o themeToggle.
+            // Vou comentar a parte do themeToggle e remover o botão da interface.
+            // Mas para não quebrar, vou apenas esconder o botão com CSS.
 
-<footer>
-    <p>&copy; 2024</p>
-</footer>
+            // ---------- FUNÇÕES ----------
+            function saveFavorites() {
+                localStorage.setItem('iaFavorites', JSON.stringify(favorites));
+            }
 
-<script>
-    // Função para alternar a abertura e o fechamento do menu
-    function toggleMenu() {
-        const menu = document.getElementById('menu');
-        // Verifica se o menu tem a classe 'open' e alterna o estado
-        if (menu.classList.contains('open')) {
-            menu.classList.remove('open'); // Fecha o menu removendo a classe 'open'
-        } else {
-            menu.classList.add('open'); // Abre o menu adicionando a classe 'open'
-        }
-    }
+            function saveUsageCount() {
+                localStorage.setItem('iaUsageCount', JSON.stringify(usageCount));
+            }
 
-    // Função para alternar a exibição das respostas das perguntas
-    function toggleAnswer(id) {
-        const answer = document.getElementById('answer-' + id);
-        // Verifica se a resposta está visível ou oculta e alterna entre os estados
-        if (answer.style.display === 'block') {
-            answer.style.display = 'none'; // Oculta a resposta
-        } else {
-            answer.style.display = 'block'; // Exibe a resposta
-        }
-    }
-</script>
+            function incrementUsage(toolName) {
+                usageCount[toolName] = (usageCount[toolName] || 0) + 1;
+                saveUsageCount();
+            }
+
+            function toggleFavorite(toolName) {
+                if (favorites[toolName]) {
+                    delete favorites[toolName];
+                } else {
+                    favorites[toolName] = true;
+                }
+                saveFavorites();
+                renderList();
+            }
+
+            function filterTools() {
+                return tools.filter(tool => {
+                    if (activeCategory !== 'all' && tool.category !== activeCategory) return false;
+                    if (searchTerm.trim() !== '') {
+                        const term = searchTerm.toLowerCase();
+                        return tool.name.toLowerCase().includes(term) || tool.description.toLowerCase().includes(term);
+                    }
+                    return true;
+                });
+            }
+
+            function sortTools(toolsArray) {
+                let sorted = [...toolsArray];
+                if (top5Mode) {
+                    sorted.sort((a, b) => (usageCount[b.name] || 0) - (usageCount[a.name] || 0));
+                    return sorted.slice(0, 5);
+                } else {
+                    if (sortMode === 'alpha') {
+                        sorted.sort((a, b) => a.name.localeCompare(b.name));
+                    } else if (sortMode === 'favorite') {
+                        sorted.sort((a, b) => {
+                            const aFav = favorites[a.name] ? 1 : 0;
+                            const bFav = favorites[b.name] ? 1 : 0;
+                            if (aFav !== bFav) return bFav - aFav;
+                            return a.name.localeCompare(b.name);
+                        });
+                    }
+                    return sorted;
+                }
+            }
+
+            function handleCardClick(toolName, url) {
+                incrementUsage(toolName);
+                window.open(url, '_blank');
+            }
+
+            function renderList() {
+                const filtered = filterTools();
+                const sorted = sortTools(filtered);
+                resultCountSpan.textContent = sorted.length;
+
+                if (sorted.length === 0) {
+                    toolsListEl.innerHTML = `<div class="no-results">Nenhuma ferramenta encontrada com os filtros atuais.</div>`;
+                    return;
+                }
+
+                let html = '';
+                sorted.forEach(tool => {
+                    const isFav = favorites[tool.name] || false;
+                    html += `
+                        <div class="tool-item" data-tool="${tool.name}" data-url="${tool.url}">
+                            <span class="favorite-icon ${isFav ? 'active' : ''}" data-tool="${tool.name}">${isFav ? '⭐' : '☆'}</span>
+                            <img src="${tool.logo}" alt="${tool.name}" class="tool-logo" loading="lazy" onerror="this.src='https://via.placeholder.com/80?text=IA'">
+                            <div class="tool-info">
+                                <div class="tool-header">
+                                    <span class="tool-name">${tool.name}</span>
+                                    <span class="tool-category">${categoryNames[tool.category] || tool.category}</span>
+                                </div>
+                                <div class="tool-description">${tool.description}</div>
+                            </div>
+                            <div class="tool-action">
+                                <span class="tool-link">
+                                    <span>Acessar</span>
+                                    <i aria-hidden="true"></i>
+                                </span>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                toolsListEl.innerHTML = html;
+
+                // Eventos de clique nos cards (exceto na estrela)
+                document.querySelectorAll('.tool-item').forEach(card => {
+                    card.addEventListener('click', (e) => {
+                        if (e.target.classList.contains('favorite-icon') || e.target.parentElement?.classList.contains('favorite-icon')) {
+                            return;
+                        }
+                        const toolName = card.dataset.tool;
+                        const url = card.dataset.url;
+                        handleCardClick(toolName, url);
+                    });
+                });
+
+                // Eventos nas estrelas
+                document.querySelectorAll('.favorite-icon').forEach(star => {
+                    star.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const toolName = star.dataset.tool;
+                        toggleFavorite(toolName);
+                    });
+                });
+            }
+
+            function setActiveTab(category) {
+                tabs.forEach(tab => {
+                    tab.classList.toggle('active', tab.dataset.category === category);
+                });
+            }
+
+            function setActiveSort(mode) {
+                sortBtns.forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.sort === mode);
+                });
+            }
+
+            function setTop5Mode(active) {
+                top5Mode = active;
+                top5Btn.classList.toggle('active', active);
+                sortBtns.forEach(btn => {
+                    btn.style.opacity = active ? '0.5' : '1';
+                    btn.style.pointerEvents = active ? 'none' : 'auto';
+                });
+                renderList();
+            }
+
+            // ---------- EVENTOS ----------
+            tabs.forEach(tab => {
+                tab.addEventListener('click', (e) => {
+                    activeCategory = e.currentTarget.dataset.category;
+                    setActiveTab(activeCategory);
+                    renderList();
+                });
+            });
+
+            searchInput.addEventListener('input', (e) => {
+                searchTerm = e.target.value;
+                renderList();
+            });
+
+            clearBtn.addEventListener('click', () => {
+                searchInput.value = '';
+                searchTerm = '';
+                activeCategory = 'all';
+                setActiveTab('all');
+                if (top5Mode) setTop5Mode(false);
+                renderList();
+            });
+
+            sortBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    if (top5Mode) setTop5Mode(false);
+                    sortMode = btn.dataset.sort;
+                    setActiveSort(sortMode);
+                    renderList();
+                });
+            });
+
+            top5Btn.addEventListener('click', () => {
+                setTop5Mode(!top5Mode);
+            });
+
+            // Removendo funcionalidade do tema para manter sempre claro
+            // O botão themeToggle será escondido via CSS (display: none)
+            themeToggle.style.display = 'none';
+
+            // Inicialização
+            function init() {
+                setActiveTab('all');
+                setActiveSort('alpha');
+                setTop5Mode(false);
+                // Atualizar contagem nas abas
+                const allTab = document.querySelector('.tab[data-category="all"]');
+                if (allTab) allTab.textContent = `Todas (${tools.length})`;
+                tabs.forEach(tab => {
+                    const cat = tab.dataset.category;
+                    if (cat !== 'all') {
+                        const count = tools.filter(t => t.category === cat).length;
+                        tab.textContent = `${categoryNames[cat] || cat} (${count})`;
+                    }
+                });
+                renderList();
+            }
+
+            init();
+        })();
+    </script>
 </body>
 </html>

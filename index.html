@@ -1,14 +1,20 @@
 
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diretório de Ferramentas IA · MINIMAL</title>
+    <title>Ferramentas de IA · prof. Ravell</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+    <meta name="color-scheme" content="light dark">
+    <meta name="description" content="Coleção de ferramentas de Inteligência Artificial selecionadas pelo prof. Ravell para criatividade, produtividade e conhecimento.">
+    <meta property="og:title" content="Ferramentas de IA · prof. Ravell">
+    <meta property="og:description" content="Coleção de ferramentas de IA selecionadas para turbinar sua criatividade, produtividade e conhecimento.">
+    <meta property="og:type" content="website">
     <style>
-        /* ===== ESTILO MINIMALISTA - GRID 3 COLUNAS ===== */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
         * {
             margin: 0;
             padding: 0;
@@ -30,16 +36,42 @@
             --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.06);
             --icon-favorite: #f5b342;
             --icon-favorite-inactive: #cccccc;
-            --font-body: 'Inter', sans-serif;
+            --font-body: 'Manrope', sans-serif;
+            --font-title: 'Sora', sans-serif;
+        }
+
+        /* Tema escuro */
+        body[data-theme="dark"] {
+            --bg-color: #111111;
+            --surface: #1c1c1e;
+            --surface-hover: #2c2c2e;
+            --border-light: #2c2c2e;
+            --border-accent: #3a3a3c;
+            --text-primary: #f2f2f7;
+            --text-secondary: #8e8e93;
+            --accent: #3b9eff;
+            --accent-soft: rgba(59, 158, 255, 0.14);
+            --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.3);
+            --shadow-hover: 0 8px 28px rgba(0, 0, 0, 0.5);
+            --icon-favorite-inactive: #48484a;
         }
 
         body {
             font-family: var(--font-body);
             background-color: var(--bg-color);
+            color-scheme: light;
             min-height: 100vh;
-            padding: 32px 20px;
+            padding: clamp(16px, 3vw, 40px) clamp(12px, 4vw, 32px);
             color: var(--text-primary);
             line-height: 1.5;
+            transition: background-color 0.3s, color 0.3s;
+            background-image:
+                radial-gradient(circle at 10% -10%, rgba(0, 122, 255, 0.14), transparent 40%),
+                radial-gradient(circle at 90% 0%, rgba(16, 185, 129, 0.12), transparent 35%);
+        }
+
+        body[data-theme="dark"] {
+            color-scheme: dark;
         }
 
         .container {
@@ -51,26 +83,43 @@
         .header {
             text-align: center;
             margin-bottom: 48px;
+            padding: clamp(20px, 3vw, 34px);
+            border-radius: 24px;
+            background: linear-gradient(140deg, color-mix(in srgb, var(--accent) 10%, var(--surface)) 0%, var(--surface) 65%);
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
         }
 
         .main-title {
-            font-size: clamp(2.5rem, 6vw, 3.5rem);
-            font-weight: 600;
+            font-family: var(--font-title);
+            font-size: clamp(1.8rem, 5vw, 3.2rem);
+            font-weight: 800;
             letter-spacing: -0.02em;
             color: var(--text-primary);
             margin-bottom: 12px;
+            text-wrap: balance;
+            background: linear-gradient(120deg, var(--text-primary) 10%, color-mix(in srgb, var(--accent) 70%, #22c55e) 95%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .subtitle {
-            font-size: 1.2rem;
+            font-size: clamp(0.95rem, 2vw, 1.2rem);
             color: var(--text-secondary);
             max-width: 650px;
             margin: 0 auto;
+            text-wrap: pretty;
         }
 
         /* Barra de ferramentas */
         .toolbar {
-            background: var(--surface);
+            position: sticky;
+            top: 12px;
+            z-index: 100;
+            background: rgba(250, 250, 250, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--border-light);
             border-radius: 20px;
             padding: 24px;
@@ -78,13 +127,56 @@
             box-shadow: var(--shadow-sm);
         }
 
+        body[data-theme="dark"] .toolbar {
+            background: rgba(28, 28, 30, 0.9);
+        }
+
         .search-wrapper {
+            position: relative;
             margin-bottom: 20px;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            pointer-events: none;
+            font-size: 1rem;
+            line-height: 1;
+        }
+
+        .search-clear {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--surface-hover);
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.2s, background 0.2s;
+            flex-shrink: 0;
+        }
+
+        .search-clear.visible { display: flex; }
+
+        .search-clear:hover {
+            color: var(--text-primary);
+            background: var(--border-accent);
         }
 
         .search-box {
             width: 100%;
-            padding: 14px 20px;
+            padding: 14px 46px 14px 46px;
             border: 1px solid var(--border-accent);
             border-radius: 40px;
             font-size: 1rem;
@@ -140,6 +232,32 @@
             color: #ffffff;
         }
 
+        .tab[data-category="chat"].active {
+            background: #0ea5e9;
+            border-color: #0ea5e9;
+        }
+
+        .tab[data-category="creative"].active {
+            background: #8b5cf6;
+            border-color: #8b5cf6;
+        }
+
+        .tab[data-category="video"].active {
+            background: #ef4444;
+            border-color: #ef4444;
+        }
+
+        .tab[data-category="productivity"].active {
+            background: #10b981;
+            border-color: #10b981;
+        }
+
+        .tab[data-category="google"].active {
+            background: #f59e0b;
+            border-color: #f59e0b;
+            color: #1f2937;
+        }
+
         .action-buttons {
             display: flex;
             gap: 12px;
@@ -190,13 +308,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 28px;
+            margin-bottom: 22px;
             font-size: 1rem;
             color: var(--text-secondary);
-            padding: 8px 16px;
-            background: var(--surface);
-            border-radius: 40px;
+            padding: 10px 14px;
+            background: linear-gradient(120deg, color-mix(in srgb, var(--accent) 7%, var(--surface)) 0%, var(--surface) 85%);
+            border-radius: 16px;
             border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
         }
 
         .result-count {
@@ -222,10 +341,10 @@
             color: var(--accent);
         }
 
-        /* Lista de ferramentas - GRID 3 COLUNAS */
+        /* Lista de ferramentas - GRID RESPONSIVO (colunas controladas por JS via --grid-cols) */
         .tools-list {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(var(--grid-cols, 3), 1fr);
             gap: 20px;
         }
 
@@ -238,24 +357,41 @@
             border: 1px solid var(--border-light);
             border-radius: 24px;
             padding: 28px 20px 24px;
-            transition: box-shadow 0.2s, border-color 0.2s;
+            transition: box-shadow 0.25s, border-color 0.25s, transform 0.25s;
             box-shadow: var(--shadow-sm);
             cursor: pointer;
             height: fit-content;
+            width: 100%;
+            position: relative;
         }
 
         .tool-item:hover {
             border-color: var(--accent);
             box-shadow: var(--shadow-hover);
+            transform: translateY(-5px);
+        }
+
+        .tool-item:focus-visible {
+            outline: 3px solid var(--accent-soft);
+            outline-offset: 3px;
         }
 
         .favorite-icon {
-            font-size: 2rem;
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 1px solid var(--border-light);
+            background: var(--surface);
+            display: grid;
+            place-items: center;
+            font-size: 1.15rem;
             cursor: pointer;
             color: var(--icon-favorite-inactive);
-            transition: color 0.2s;
-            margin-bottom: 12px;
-            align-self: center;
+            transition: color 0.2s, transform 0.2s, border-color 0.2s, background 0.2s;
+            z-index: 2;
         }
 
         .favorite-icon.active {
@@ -264,22 +400,26 @@
 
         .favorite-icon:hover {
             transform: scale(1.1);
+            border-color: var(--accent);
+            background: var(--accent-soft);
         }
 
         .tool-logo {
             width: 80px;
             height: 80px;
             border-radius: 16px;
-            background: #ffffff;
+            background: var(--surface);
             padding: 8px;
             object-fit: contain;
             border: 1px solid var(--border-light);
             margin-bottom: 16px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            display: block;
         }
 
         .tool-info {
             width: 100%;
+            flex: 1;
             margin-bottom: 20px;
         }
 
@@ -296,6 +436,7 @@
             font-weight: 600;
             color: var(--text-primary);
             line-height: 1.3;
+            word-break: break-word; /* Quebra palavras longas */
         }
 
         .tool-category {
@@ -309,7 +450,15 @@
             border-radius: 30px;
             border: 1px solid var(--border-accent);
             display: inline-block;
+            max-width: 100%;
         }
+
+        /* Cores por categoria */
+        .tool-category[data-cat="chat"]         { color: #0EA5E9; background: rgba(14,165,233,0.08); border-color: rgba(14,165,233,0.25); }
+        .tool-category[data-cat="creative"]     { color: #8B5CF6; background: rgba(139,92,246,0.08); border-color: rgba(139,92,246,0.25); }
+        .tool-category[data-cat="video"]        { color: #EF4444; background: rgba(239,68,68,0.08); border-color: rgba(239,68,68,0.25); }
+        .tool-category[data-cat="productivity"] { color: #10B981; background: rgba(16,185,129,0.08); border-color: rgba(16,185,129,0.25); }
+        .tool-category[data-cat="google"]       { color: #F59E0B; background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.25); }
 
         .tool-description {
             color: var(--text-secondary);
@@ -322,6 +471,7 @@
             line-height: 1.5;
             max-width: 90%;
             margin: 0 auto;
+            word-break: break-word;
         }
 
         .tool-action {
@@ -341,22 +491,118 @@
             padding: 10px 24px;
             font-weight: 500;
             color: var(--accent);
-            text-decoration: none;
+            font-family: var(--font-body);
             font-size: 0.9rem;
+            cursor: pointer;
             transition: background 0.2s, color 0.2s;
             width: fit-content;
             min-width: 130px;
         }
 
-        .tool-link i::before {
-            content: "↗";
-            font-style: normal;
-            font-size: 1.1rem;
+        .tool-link:focus-visible,
+        .favorite-icon:focus-visible,
+        .tab:focus-visible,
+        .sort-btn:focus-visible,
+        .top5-btn:focus-visible,
+        .theme-btn:focus-visible,
+        .search-clear:focus-visible,
+        .clear-filters:focus-visible {
+            outline: 3px solid var(--accent-soft);
+            outline-offset: 2px;
         }
 
         .tool-item:hover .tool-link {
             background: var(--accent);
             color: #ffffff;
+        }
+
+        .top5-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.03em;
+            color: #ffffff;
+            background: linear-gradient(135deg, #f97316, #ef4444);
+            box-shadow: 0 8px 18px rgba(239, 68, 68, 0.35);
+            z-index: 2;
+        }
+
+        body[data-top5="true"] .tool-item {
+            border-color: color-mix(in srgb, var(--accent) 28%, var(--border-light));
+            background: linear-gradient(170deg, color-mix(in srgb, var(--accent) 6%, var(--surface)) 0%, var(--surface) 70%);
+        }
+
+        body[data-top5="true"] .tool-item[data-rank="1"] {
+            border-color: #f97316;
+            box-shadow: 0 14px 30px rgba(249, 115, 22, 0.22);
+        }
+
+        @media (min-width: 900px) {
+            body[data-top5="true"] .tool-item[data-rank="1"] {
+                grid-column: span 2;
+                text-align: left;
+                align-items: flex-start;
+            }
+
+            body[data-top5="true"] .tool-item[data-rank="1"] .tool-header,
+            body[data-top5="true"] .tool-item[data-rank="1"] .tool-action {
+                align-items: flex-start;
+                justify-content: flex-start;
+            }
+
+            body[data-top5="true"] .tool-item[data-rank="1"] .tool-description {
+                margin: 0;
+                max-width: 100%;
+                -webkit-line-clamp: 3;
+                line-clamp: 3;
+            }
+        }
+
+        /* Layout editorial (aplicado fora do modo Top 5) */
+        @media (min-width: 1100px) {
+            body[data-editorial="true"]:not([data-top5="true"]) .tool-item[data-layout="hero"] {
+                grid-column: span 2;
+                text-align: left;
+                align-items: flex-start;
+                border-color: color-mix(in srgb, var(--accent) 35%, var(--border-light));
+                background: linear-gradient(165deg, color-mix(in srgb, var(--accent) 9%, var(--surface)) 0%, var(--surface) 70%);
+            }
+
+            body[data-editorial="true"]:not([data-top5="true"]) .tool-item[data-layout="hero"] .tool-header,
+            body[data-editorial="true"]:not([data-top5="true"]) .tool-item[data-layout="hero"] .tool-action {
+                align-items: flex-start;
+                justify-content: flex-start;
+            }
+
+            body[data-editorial="true"]:not([data-top5="true"]) .tool-item[data-layout="hero"] .tool-description {
+                max-width: 100%;
+                margin: 0;
+                -webkit-line-clamp: 3;
+                line-clamp: 3;
+            }
+
+            body[data-editorial="true"]:not([data-top5="true"]) .tool-item[data-layout="wide"] {
+                grid-column: span 2;
+            }
+        }
+
+        .editorial-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            color: #ffffff;
+            background: linear-gradient(135deg, #0ea5e9, #22c55e);
+            box-shadow: 0 8px 18px rgba(14, 165, 233, 0.28);
+            z-index: 2;
         }
 
         .no-results {
@@ -379,39 +625,209 @@
             font-size: 0.9rem;
         }
 
-        /* Responsividade */
-        @media (max-width: 1024px) {
-            .tools-list {
-                grid-template-columns: repeat(2, 1fr);
+        /* Animação de entrada dos cards (usa 'translate' como prop. separada, sem conflito com hover transform) */
+        @keyframes cardIn {
+            from { opacity: 0; translate: 0 18px; }
+            to   { opacity: 1; translate: 0 0; }
+        }
+        .tool-item { animation: cardIn 0.3s ease both; }
+
+        /* Respeita preferência de redução de movimento */
+        @media (prefers-reduced-motion: reduce) {
+            .tool-item { animation: none; }
+            .tool-item, .tool-link, .tab, .sort-btn, .top5-btn, .scroll-top, body {
+                transition: none !important;
             }
         }
 
-        @media (max-width: 700px) {
+        /* Botão voltar ao topo */
+        .scroll-top {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0, 122, 255, 0.4);
+            opacity: 0;
+            transform: translateY(12px) scale(0.85);
+            transition: opacity 0.3s, transform 0.3s;
+            pointer-events: none;
+            z-index: 200;
+        }
+        .scroll-top.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+        .scroll-top:hover {
+            transform: translateY(-3px) scale(1.08);
+            box-shadow: 0 6px 24px rgba(0, 122, 255, 0.5);
+        }
+
+        /* Estado vazio */
+        .no-results-icon {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+
+        /* ===== RESPONSIVIDADE COMPLETA =====
+           O número de colunas do grid (––grid-cols) é controlado por JS via ResizeObserver.
+           Os media queries cuidam apenas de layout/tipografia/espaçamentos. */
+
+        /* Tablet portrait / notebooks (≤768px) */
+        @media (max-width: 768px) {
+            .header {
+                margin-bottom: 32px;
+            }
+
+            .toolbar {
+                padding: 20px;
+            }
+
             .tools-list {
-                grid-template-columns: 1fr;
+                gap: 16px;
             }
-            .tool-item {
-                padding: 24px 16px;
-            }
+
             .tabs {
-                flex-wrap: nowrap;
-                overflow-x: auto;
-                padding-bottom: 4px;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+                flex: none;
+                width: 100%;
             }
+
             .tab {
-                flex-shrink: 0;
+                width: 100%;
+                padding: 8px 6px;
+                font-size: 0.85rem;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                text-align: center;
             }
+
             .controls-row {
                 flex-direction: column;
                 align-items: stretch;
             }
+
+            .action-buttons {
+                justify-content: center;
+            }
+
+            .sort-controls {
+                width: 100%;
+                justify-content: center;
+            }
         }
 
-        @media (max-width: 480px) {
-            .tool-logo {
-                width: 70px;
-                height: 70px;
+        /* Smartphone grande (≤600px) */
+        @media (max-width: 600px) {
+            .tools-list {
+                gap: 12px;
             }
+
+            .tool-item {
+                padding: 18px 14px;
+            }
+
+            .tool-logo {
+                width: 64px;
+                height: 64px;
+            }
+
+            .tool-name {
+                font-size: 1.1rem;
+            }
+
+            .tool-description {
+                font-size: 0.85rem;
+                max-width: 100%;
+            }
+
+            .tool-link {
+                min-width: 110px;
+                padding: 9px 18px;
+                font-size: 0.85rem;
+            }
+
+            .tool-category {
+                white-space: nowrap;
+                max-width: 90%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+
+        /* Smartphone (≤480px) */
+        @media (max-width: 480px) {
+            .tool-item {
+                padding: 20px 16px;
+            }
+
+            .toolbar {
+                padding: 16px;
+            }
+
+            .search-box {
+                padding: 12px 42px;
+                font-size: 0.95rem;
+            }
+
+            .tool-logo {
+                width: 60px;
+                height: 60px;
+            }
+
+            .tool-link {
+                min-width: 100px;
+                padding: 8px 16px;
+            }
+
+            .results-info {
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+            }
+        }
+
+        /* Telas muito pequenas (≤360px) */
+        @media (max-width: 360px) {
+            .tabs {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .tab {
+                font-size: 0.8rem;
+                padding: 7px 4px;
+            }
+
+            .tool-item {
+                padding: 16px 12px;
+            }
+        }
+
+        /* Indicador de breakpoint (canto inferior direito, visível apenas em dev) */
+        #screen-indicator {
+            display: none;
+        }
+
+        /* Correcões para logo sem src válido */
+        .tool-logo[src=""],
+        .tool-logo:not([src]),
+        .tool-logo[src="#"] {
+            background: linear-gradient(135deg, var(--surface-hover), var(--border-accent));
         }
     </style>
 </head>
@@ -424,7 +840,9 @@
 
         <div class="toolbar">
             <div class="search-wrapper">
-                <input type="text" class="search-box" id="searchInput" placeholder="Buscar ferramentas por nome ou descrição...">
+                <span class="search-icon" aria-hidden="true">🔍</span>
+                <input type="text" class="search-box" id="searchInput" placeholder="Buscar ferramentas por nome ou descrição..." aria-label="Buscar ferramentas">
+                <button class="search-clear" id="searchClear" aria-label="Limpar busca">✕</button>
             </div>
             
             <div class="controls-row">
@@ -434,6 +852,7 @@
                     <button class="tab" data-category="creative">Criativas</button>
                     <button class="tab" data-category="video">Vídeo</button>
                     <button class="tab" data-category="productivity">Produtividade</button>
+                    <button class="tab" data-category="google">Google</button>
                 </div>
 
                 <div class="action-buttons">
@@ -442,7 +861,7 @@
                         <button class="sort-btn" data-sort="favorite">⭐ Favoritos</button>
                     </div>
                     <button class="top5-btn" id="top5Btn">🔥 Top 5</button>
-                    <button class="theme-btn" id="themeToggle">🌓 Tema</button>
+                    <button class="theme-btn" id="themeToggle" aria-label="Alternar tema">🌓</button>
                 </div>
             </div>
         </div>
@@ -455,8 +874,10 @@
         <div class="tools-list" id="toolsList"></div>
 
         <footer class="footer">
-            <p>© 2025 · Diretório de IA · Atualizado regularmente</p>
+            <p>© 2026 · Atualizado regularmente!</p>
         </footer>
+
+        <button class="scroll-top" id="scrollTop" aria-label="Voltar ao topo">↑</button>
     </div>
 
     <script>
@@ -469,6 +890,7 @@
                 { name: "Deepseek", logo: "https://cdn.worldvectorlogo.com/logos/deepseek-2.svg", category: "chat", description: "Focado em programação e raciocínio lógico profundo.", url: "https://chat.deepseek.com/" },
                 { name: "Qwen", logo: "https://crystalpng.com/wp-content/uploads/2025/02/Qwen-05.png", category: "chat", description: "Modelo da Alibaba para tarefas diversas e suporte multilíngue.", url: "https://qwen.ai/home" },
                 { name: "Grok", logo: "https://img.icons8.com/color/1200/grok--v2.jpg", category: "chat", description: "Assistente de IA da xAI com respostas diretas e atualizadas.", url: "https://grok.com/" },
+                { name: "Claude", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnM91o7r1wba01xcHW15PLqbe-ONaTIjOO3g&s", category: "chat", description: "Assistente de IA da Anthropic, especializado em conversas seguras e detalhadas.", url: "https://claude.ai/new" },
                 { name: "Suno", logo: "https://images.seeklogo.com/logo-png/52/2/suno-ai-logo-png_seeklogo-528379.png", category: "creative", description: "Criação de músicas e áudio com IA generativa.", url: "https://suno.com/" },
                 { name: "Jules", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvAXEz4EsU3RQHCV96BAfJusei09ZBjQOG2g&s", category: "creative", description: "Geração e edição de imagens por comandos de texto.", url: "https://jules.google.com/task" },
                 { name: "Manus AI", logo: "https://play-lh.googleusercontent.com/7RIeDBEnjVVn3d1yr441p7u0BK9eT8E6P9i__XYTcJAzOe7sqVgJp7pmlypqY9NBqjI", category: "creative", description: "Design gráfico e edição profissional com IA.", url: "https://manus.im/app" },
@@ -476,7 +898,25 @@
                 { name: "Wan", logo: "https://catai.com.br/wp-content/uploads/2025/08/Wan-01.jpg", category: "video", description: "Criação automática de vídeos a partir de roteiros.", url: "https://create.wan.video/" },
                 { name: "Vids", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Google_Vids_2024_Logo.svg/250px-Google_Vids_2024_Logo.svg.png", category: "video", description: "Ferramenta do Google Workspace para edição e criação de vídeos.", url: "https://workspace.google.com/intl/pt-BR/products/vids/" },
                 { name: "Perplexity", logo: "https://images.seeklogo.com/logo-png/61/2/perplexity-ai-icon-black-logo-png_seeklogo-611679.png", category: "productivity", description: "Mecanismo de busca com respostas geradas por IA.", url: "https://www.perplexity.ai/" },
-                { name: "NotebookLM", logo: "https://static1.xdaimages.com/wordpress/wp-content/uploads/2025/03/notebooklm-removebg-preview.png", category: "productivity", description: "Organização de notas e resumos com base nos seus documentos.", url: "https://notebooklm.google.com/" }
+                { name: "NotebookLM", logo: "https://static1.xdaimages.com/wordpress/wp-content/uploads/2025/03/notebooklm-removebg-preview.png", category: "productivity", description: "Organização de notas e resumos com base nos seus documentos.", url: "https://notebooklm.google.com/" },
+                { name: "Google AI Studio", logo: "https://pbs.twimg.com/profile_images/1957558782067896323/6jXpPKD4_400x400.png", category: "productivity", description: "Plataforma para desenvolver e testar modelos de IA do Google, com acesso a APIs e ferramentas.", url: "https://aistudio.google.com/?project=gen-lang-client-0962495001" },
+                { name: "AI Free Forever", logo: "https://aifreeforever.com/logo.png", category: "productivity", description: "Plataforma com acesso gratuito a diversas ferramentas de IA para produtividade e criatividade.", url: "https://aifreeforever.com/" },
+                { name: "Flow", logo: "https://vectorseek.com/wp-content/uploads/2025/09/Google-flow-Logo-PNG-SVG-Vector-1.png", category: "creative", description: "Ferramenta experimental do Google para criação de fluxos e automações visuais com IA.", url: "https://labs.google/fx/pt/tools/flow" },
+                { name: "Kimi", logo: "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/kimi-ai-icon.png", category: "chat", description: "Assistente de IA com suporte a longos contextos e análise de documentos.", url: "https://www.kimi.com/" },
+                // Midjourney com a nova logo
+                { name: "Midjourney", logo: "https://images.seeklogo.com/logo-png/50/2/midjourney-logo-png_seeklogo-501203.png", category: "creative", description: "Geração de imagens artísticas de alta qualidade a partir de descrições textuais.", url: "https://www.midjourney.com/" },
+                // DeepHat
+                { name: "DeepHat", logo: "https://app.deephat.ai/_next/static/media/logomark_dark.49026cc4.svg", category: "productivity", description: "Plataforma de IA para análise profunda, automação de tarefas e insights baseados em dados.", url: "https://app.deephat.ai/" }
+            ];
+
+            // Lista de ferramentas do Google (para a nova aba)
+            const googleToolsNames = [
+                "Gemini",
+                "Jules",
+                "Vids",
+                "NotebookLM",
+                "Google AI Studio",
+                "Flow"
             ];
 
             const categoryNames = {
@@ -484,36 +924,31 @@
                 chat: "Chat",
                 creative: "Criativas",
                 video: "Vídeo",
-                productivity: "Produtividade"
+                productivity: "Produtividade",
+                google: "Google"
             };
 
             // Elementos DOM
             const toolsListEl = document.getElementById('toolsList');
             const searchInput = document.getElementById('searchInput');
+            const searchClear = document.getElementById('searchClear');
             const tabs = document.querySelectorAll('.tab');
             const resultCountSpan = document.getElementById('resultCount');
             const clearBtn = document.getElementById('clearFilters');
             const sortBtns = document.querySelectorAll('.sort-btn');
-            const themeToggle = document.getElementById('themeToggle');
             const top5Btn = document.getElementById('top5Btn');
+            const themeToggle = document.getElementById('themeToggle');
+            const scrollTopBtn = document.getElementById('scrollTop');
 
             // Estado
             let activeCategory = 'all';
             let searchTerm = '';
-            let sortMode = 'alpha'; // 'alpha' ou 'favorite'
-            let top5Mode = false;    // se true, mostra apenas as 5 mais usadas
-            let favorites = JSON.parse(localStorage.getItem('iaFavorites')) || {};
-            let usageCount = JSON.parse(localStorage.getItem('iaUsageCount')) || {};
-
-            // Tema (apenas claro - removi o seletor de tema escuro para manter tonalidades claras)
-            // Mas mantive o botão de tema caso queira, mas removi a classe dark-theme para não escurecer
-            // Se quiser remover o botão, pode apagar. Vou manter apenas o ícone, mas sem funcionalidade escura.
-            // Para simplificar, vou desabilitar a troca de tema escuro e manter sempre claro.
-            // Mas vou deixar o botão lá, e ao clicar, ele não faz nada (ou apenas simula um toggle, mas sem mudar cores).
-            // Melhor: removo a funcionalidade de tema escuro e deixo apenas o botão como decorativo? Não, vou manter o botão, mas sem efeito de escuro.
-            // Na verdade, o usuário pediu tonalidades claras, então vamos fixar o tema claro e remover o themeToggle.
-            // Vou comentar a parte do themeToggle e remover o botão da interface.
-            // Mas para não quebrar, vou apenas esconder o botão com CSS.
+            let sortMode = 'alpha';
+            let favoriteFilterActive = false;
+            let top5Mode = false;
+            let favorites = (() => { try { return JSON.parse(localStorage.getItem('iaFavorites')) || {}; } catch { return {}; } })();
+            let usageCount = (() => { try { return JSON.parse(localStorage.getItem('iaUsageCount')) || {}; } catch { return {}; } })();
+            let isDark = (() => { try { const s = localStorage.getItem('iaDarkMode'); return s !== null ? s === 'true' : window.matchMedia('(prefers-color-scheme: dark)').matches; } catch { return false; } })();
 
             // ---------- FUNÇÕES ----------
             function saveFavorites() {
@@ -522,6 +957,12 @@
 
             function saveUsageCount() {
                 localStorage.setItem('iaUsageCount', JSON.stringify(usageCount));
+            }
+
+            function applyTheme() {
+                document.body.dataset.theme = isDark ? 'dark' : 'light';
+                if (themeToggle) themeToggle.textContent = isDark ? '☀️' : '🌓';
+                try { localStorage.setItem('iaDarkMode', isDark); } catch {}
             }
 
             function incrementUsage(toolName) {
@@ -536,16 +977,34 @@
                     favorites[toolName] = true;
                 }
                 saveFavorites();
-                renderList();
+
+                // Atualiza apenas os elementos do card afetado — sem re-renderizar tudo
+                const isFav = !!favorites[toolName];
+                document.querySelectorAll(`.favorite-icon[data-tool="${CSS.escape(toolName)}"]`).forEach(star => {
+                    star.textContent = isFav ? '⭐' : '☆';
+                    star.classList.toggle('active', isFav);
+                    star.setAttribute('aria-label', isFav ? 'Remover dos favoritos' : 'Adicionar aos favoritos');
+                });
+
+                // Se o filtro de favoritos estiver ativo, ainda precisa re-renderizar
+                if (favoriteFilterActive || sortMode === 'favorite') renderList();
             }
 
             function filterTools() {
                 return tools.filter(tool => {
-                    if (activeCategory !== 'all' && tool.category !== activeCategory) return false;
+                    // Filtro por categoria
+                    if (activeCategory === 'google') {
+                        if (!googleToolsNames.includes(tool.name)) return false;
+                    } else if (activeCategory !== 'all' && tool.category !== activeCategory) {
+                        return false;
+                    }
+                    // Filtro de busca
                     if (searchTerm.trim() !== '') {
                         const term = searchTerm.toLowerCase();
-                        return tool.name.toLowerCase().includes(term) || tool.description.toLowerCase().includes(term);
+                        if (!tool.name.toLowerCase().includes(term) && !tool.description.toLowerCase().includes(term)) return false;
                     }
+                    // Filtro de favoritos
+                    if (favoriteFilterActive && !favorites[tool.name]) return false;
                     return true;
                 });
             }
@@ -572,7 +1031,92 @@
 
             function handleCardClick(toolName, url) {
                 incrementUsage(toolName);
-                window.open(url, '_blank');
+                window.open(url, '_blank', 'noopener,noreferrer');
+            }
+
+            // SVG data URI usado como fallback local quando a logo não carrega
+            const FALLBACK_LOGO = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' rx='16' fill='%23e5e7eb'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='20' font-weight='600' fill='%236b7280'%3EIA%3C/text%3E%3C/svg%3E";
+
+            function buildCard(tool, index) {
+                const isFav = !!favorites[tool.name];
+                const delay = Math.min(index * 0.04, 0.4).toFixed(2);
+
+                const card = document.createElement('div');
+                card.className = 'tool-item';
+                card.dataset.tool = tool.name;
+                card.dataset.url = tool.url;
+                card.setAttribute('role', 'button');
+                card.setAttribute('tabindex', '0');
+                card.setAttribute('aria-label', `Acessar ${tool.name}`);
+                card.style.animationDelay = `${delay}s`;
+                if (top5Mode) card.dataset.rank = String(index + 1);
+
+                if (!top5Mode) {
+                    const layout = index % 7 === 0 ? 'hero' : (index % 7 === 4 ? 'wide' : 'default');
+                    card.dataset.layout = layout;
+
+                    if (layout === 'hero') {
+                        const badge = document.createElement('span');
+                        badge.className = 'editorial-badge';
+                        badge.textContent = 'Destaque';
+                        card.appendChild(badge);
+                    }
+                }
+
+                if (top5Mode) {
+                    const badge = document.createElement('span');
+                    badge.className = 'top5-badge';
+                    badge.textContent = `Top ${index + 1}`;
+                    card.appendChild(badge);
+                }
+
+                const star = document.createElement('span');
+                star.className = `favorite-icon${isFav ? ' active' : ''}`;
+                star.dataset.tool = tool.name;
+                star.setAttribute('aria-label', isFav ? 'Remover dos favoritos' : 'Adicionar aos favoritos');
+                star.textContent = isFav ? '⭐' : '☆';
+
+                const img = document.createElement('img');
+                img.src = tool.logo || FALLBACK_LOGO;
+                img.alt = tool.name;
+                img.className = 'tool-logo';
+                img.loading = 'lazy';
+                img.addEventListener('error', () => { img.src = FALLBACK_LOGO; }, { once: true });
+
+                const info = document.createElement('div');
+                info.className = 'tool-info';
+
+                const header = document.createElement('div');
+                header.className = 'tool-header';
+
+                const nameEl = document.createElement('span');
+                nameEl.className = 'tool-name';
+                nameEl.textContent = tool.name;
+
+                const catEl = document.createElement('span');
+                catEl.className = 'tool-category';
+                catEl.dataset.cat = tool.category;
+                catEl.textContent = categoryNames[tool.category] || tool.category;
+
+                header.append(nameEl, catEl);
+
+                const desc = document.createElement('div');
+                desc.className = 'tool-description';
+                desc.textContent = tool.description;
+
+                info.append(header, desc);
+
+                const action = document.createElement('div');
+                action.className = 'tool-action';
+
+                const btn = document.createElement('button');
+                btn.className = 'tool-link';
+                btn.setAttribute('aria-label', `Acessar ${tool.name} (abre em nova aba)`);
+                btn.textContent = 'Acessar ↗';
+
+                action.appendChild(btn);
+                card.append(star, img, info, action);
+                return card;
             }
 
             function renderList() {
@@ -581,57 +1125,48 @@
                 resultCountSpan.textContent = sorted.length;
 
                 if (sorted.length === 0) {
-                    toolsListEl.innerHTML = `<div class="no-results">Nenhuma ferramenta encontrada com os filtros atuais.</div>`;
+                    const empty = document.createElement('div');
+                    empty.className = 'no-results';
+                    const icon = document.createElement('span');
+                    icon.className = 'no-results-icon';
+                    icon.textContent = '🔍';
+                    const msg = document.createElement('p');
+                    msg.textContent = 'Nenhuma ferramenta encontrada.';
+                    const hint = document.createElement('p');
+                    hint.style.cssText = 'font-size:0.9rem;margin-top:8px;opacity:0.7';
+                    hint.textContent = 'Tente outro termo ou limpe os filtros.';
+                    empty.append(icon, msg, hint);
+                    toolsListEl.replaceChildren(empty);
                     return;
                 }
 
-                let html = '';
-                sorted.forEach(tool => {
-                    const isFav = favorites[tool.name] || false;
-                    html += `
-                        <div class="tool-item" data-tool="${tool.name}" data-url="${tool.url}">
-                            <span class="favorite-icon ${isFav ? 'active' : ''}" data-tool="${tool.name}">${isFav ? '⭐' : '☆'}</span>
-                            <img src="${tool.logo}" alt="${tool.name}" class="tool-logo" loading="lazy" onerror="this.src='https://via.placeholder.com/80?text=IA'">
-                            <div class="tool-info">
-                                <div class="tool-header">
-                                    <span class="tool-name">${tool.name}</span>
-                                    <span class="tool-category">${categoryNames[tool.category] || tool.category}</span>
-                                </div>
-                                <div class="tool-description">${tool.description}</div>
-                            </div>
-                            <div class="tool-action">
-                                <span class="tool-link">
-                                    <span>Acessar</span>
-                                    <i aria-hidden="true"></i>
-                                </span>
-                            </div>
-                        </div>
-                    `;
-                });
-
-                toolsListEl.innerHTML = html;
-
-                // Eventos de clique nos cards (exceto na estrela)
-                document.querySelectorAll('.tool-item').forEach(card => {
-                    card.addEventListener('click', (e) => {
-                        if (e.target.classList.contains('favorite-icon') || e.target.parentElement?.classList.contains('favorite-icon')) {
-                            return;
-                        }
-                        const toolName = card.dataset.tool;
-                        const url = card.dataset.url;
-                        handleCardClick(toolName, url);
-                    });
-                });
-
-                // Eventos nas estrelas
-                document.querySelectorAll('.favorite-icon').forEach(star => {
-                    star.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        const toolName = star.dataset.tool;
-                        toggleFavorite(toolName);
-                    });
-                });
+                const frag = document.createDocumentFragment();
+                sorted.forEach((tool, index) => frag.appendChild(buildCard(tool, index)));
+                toolsListEl.replaceChildren(frag);
             }
+
+            // Event delegation — registrado uma única vez, fora do renderList
+            toolsListEl.addEventListener('click', (e) => {
+                const star = e.target.closest('.favorite-icon');
+                if (star) {
+                    e.stopPropagation();
+                    toggleFavorite(star.dataset.tool);
+                    return;
+                }
+                const card = e.target.closest('.tool-item');
+                if (card) {
+                    handleCardClick(card.dataset.tool, card.dataset.url);
+                }
+            });
+
+            toolsListEl.addEventListener('keydown', (e) => {
+                if (e.key !== 'Enter' && e.key !== ' ') return;
+                const card = e.target.closest('.tool-item');
+                if (card) {
+                    e.preventDefault();
+                    handleCardClick(card.dataset.tool, card.dataset.url);
+                }
+            });
 
             function setActiveTab(category) {
                 tabs.forEach(tab => {
@@ -641,18 +1176,30 @@
 
             function setActiveSort(mode) {
                 sortBtns.forEach(btn => {
-                    btn.classList.toggle('active', btn.dataset.sort === mode);
+                    if (btn.dataset.sort === mode) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
                 });
             }
 
             function setTop5Mode(active) {
                 top5Mode = active;
+                document.body.dataset.top5 = active ? 'true' : 'false';
                 top5Btn.classList.toggle('active', active);
                 sortBtns.forEach(btn => {
                     btn.style.opacity = active ? '0.5' : '1';
                     btn.style.pointerEvents = active ? 'none' : 'auto';
                 });
                 renderList();
+            }
+
+            function updateFavoriteFilterButton() {
+                const favBtn = document.querySelector('.sort-btn[data-sort="favorite"]');
+                if (favBtn) {
+                    favBtn.classList.toggle('active', favoriteFilterActive);
+                }
             }
 
             // ---------- EVENTOS ----------
@@ -664,26 +1211,53 @@
                 });
             });
 
+            let searchDebounceTimer = null;
             searchInput.addEventListener('input', (e) => {
                 searchTerm = e.target.value;
+                searchClear.classList.toggle('visible', searchTerm.length > 0);
+                clearTimeout(searchDebounceTimer);
+                searchDebounceTimer = setTimeout(renderList, 200);
+            });
+
+            searchClear.addEventListener('click', () => {
+                searchInput.value = '';
+                searchTerm = '';
+                searchClear.classList.remove('visible');
                 renderList();
+                searchInput.focus();
             });
 
             clearBtn.addEventListener('click', () => {
                 searchInput.value = '';
                 searchTerm = '';
+                searchClear.classList.remove('visible');
                 activeCategory = 'all';
+                favoriteFilterActive = false;
                 setActiveTab('all');
                 if (top5Mode) setTop5Mode(false);
+                updateFavoriteFilterButton();
                 renderList();
             });
 
             sortBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
                     if (top5Mode) setTop5Mode(false);
-                    sortMode = btn.dataset.sort;
-                    setActiveSort(sortMode);
-                    renderList();
+
+                    const sortValue = btn.dataset.sort;
+
+                    if (sortValue === 'alpha') {
+                        sortMode = 'alpha';
+                        setActiveSort('alpha');
+                        renderList();
+                    } else if (sortValue === 'favorite') {
+                        favoriteFilterActive = !favoriteFilterActive;
+                        if (favoriteFilterActive && sortMode === 'favorite') {
+                            sortMode = 'alpha';
+                            setActiveSort('alpha');
+                        }
+                        updateFavoriteFilterButton();
+                        renderList();
+                    }
                 });
             });
 
@@ -691,29 +1265,90 @@
                 setTop5Mode(!top5Mode);
             });
 
-            // Removendo funcionalidade do tema para manter sempre claro
-            // O botão themeToggle será escondido via CSS (display: none)
-            themeToggle.style.display = 'none';
+            // Atalho: tecla / coloca foco na busca
+            document.addEventListener('keydown', (e) => {
+                if (e.key === '/' && document.activeElement !== searchInput) {
+                    e.preventDefault();
+                    searchInput.focus();
+                }
+            });
 
-            // Inicialização
             function init() {
+                applyTheme();
+                document.body.dataset.editorial = 'true';
                 setActiveTab('all');
                 setActiveSort('alpha');
                 setTop5Mode(false);
-                // Atualizar contagem nas abas
+                favoriteFilterActive = false;
+                updateFavoriteFilterButton();
+
                 const allTab = document.querySelector('.tab[data-category="all"]');
                 if (allTab) allTab.textContent = `Todas (${tools.length})`;
                 tabs.forEach(tab => {
                     const cat = tab.dataset.category;
-                    if (cat !== 'all') {
-                        const count = tools.filter(t => t.category === cat).length;
-                        tab.textContent = `${categoryNames[cat] || cat} (${count})`;
+                    if (cat === 'all') return;
+                    let count;
+                    if (cat === 'google') {
+                        count = tools.filter(t => googleToolsNames.includes(t.name)).length;
+                    } else {
+                        count = tools.filter(t => t.category === cat).length;
                     }
+                    tab.textContent = `${categoryNames[cat] || cat} (${count})`;
                 });
                 renderList();
             }
 
+            themeToggle.addEventListener('click', () => {
+                isDark = !isDark;
+                applyTheme();
+            });
+
+            // Scroll to top
+            window.addEventListener('scroll', () => {
+                scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+            }, { passive: true });
+
+            scrollTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
             init();
+
+            // ===== ADAPTAÇÃO DINÂMICA POR TAMANHO DE TELA =====
+            // Usa ResizeObserver no container (mais preciso que media queries,
+            // pois mede o elemento real e não a viewport inteira).
+            const BREAKPOINTS = [
+                { maxWidth: 380,  cols: 1, label: 'xs'   },  // smartphones muito pequenos
+                { maxWidth: 540,  cols: 1, label: 'sm'   },  // smartphones
+                { maxWidth: 720,  cols: 2, label: 'md'   },  // smartphones grandes / tablets portrait
+                { maxWidth: 960,  cols: 2, label: 'lg'   },  // tablets landscape
+                { maxWidth: 1200, cols: 3, label: 'xl'   },  // notebooks
+                { maxWidth: Infinity, cols: 4, label: 'xxl' } // desktops / telas grandes
+            ];
+
+            function applyScreenLayout(containerWidth) {
+                const bp = BREAKPOINTS.find(b => containerWidth <= b.maxWidth);
+                const root = document.documentElement;
+
+                // Ajusta o número de colunas do grid via variável CSS
+                root.style.setProperty('--grid-cols', bp.cols);
+
+                // Marca o breakpoint no body para CSS e JS poderem reagir
+                document.body.dataset.screen = bp.label;
+            }
+
+            // Executa imediatamente e a cada redimensionamento
+            const container = document.querySelector('.container');
+            applyScreenLayout(container.offsetWidth);
+
+            const resizeObserver = new ResizeObserver(entries => {
+                for (const entry of entries) {
+                    applyScreenLayout(entry.contentRect.width);
+                }
+            });
+            resizeObserver.observe(container);
+            // ======================================================
+
         })();
     </script>
 </body>

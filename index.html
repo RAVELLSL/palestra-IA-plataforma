@@ -1,150 +1,321 @@
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ferramentas de IA · prof. Ravell</title>
+    <title>Ferramentas de IA · Prof. Ravell</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+
     <meta name="color-scheme" content="light dark">
-    <meta name="description" content="Coleção de ferramentas de Inteligência Artificial selecionadas pelo prof. Ravell para criatividade, produtividade e conhecimento.">
-    <meta property="og:title" content="Ferramentas de IA · prof. Ravell">
-    <meta property="og:description" content="Coleção de ferramentas de IA selecionadas para turbinar sua criatividade, produtividade e conhecimento.">
-    <meta property="og:type" content="website">
+    <meta name="description" content="Coleção organizada de ferramentas de Inteligência Artificial selecionadas pelo Prof. Ravell.">
+
     <style>
+        :root {
+            --bg: #f4f7fb;
+            --bg-deep: #eaf1fb;
+            --surface: rgba(255, 255, 255, 0.86);
+            --surface-solid: #ffffff;
+            --surface-soft: #f7faff;
+            --surface-hover: #edf5ff;
+            --border: rgba(15, 23, 42, 0.10);
+            --border-strong: rgba(15, 23, 42, 0.18);
+            --text: #0f172a;
+            --muted: #64748b;
+            --muted-2: #94a3b8;
+            --accent: #2563eb;
+            --accent-2: #06b6d4;
+            --accent-3: #7c3aed;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --favorite: #f59e0b;
+            --shadow-sm: 0 10px 24px rgba(15, 23, 42, 0.06);
+            --shadow-md: 0 18px 45px rgba(15, 23, 42, 0.10);
+            --radius-xl: 28px;
+            --radius-lg: 22px;
+            --radius-md: 16px;
+            --font-body: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            --font-title: "Sora", system-ui, sans-serif;
+            --container: 1320px;
+            --safe-pad: clamp(14px, 3vw, 34px);
+        }
+
+        body[data-theme="dark"] {
+            --bg: #07111f;
+            --bg-deep: #020617;
+            --surface: rgba(15, 23, 42, 0.78);
+            --surface-solid: #111827;
+            --surface-soft: rgba(30, 41, 59, 0.78);
+            --surface-hover: rgba(51, 65, 85, 0.78);
+            --border: rgba(148, 163, 184, 0.16);
+            --border-strong: rgba(148, 163, 184, 0.28);
+            --text: #f8fafc;
+            --muted: #cbd5e1;
+            --muted-2: #94a3b8;
+            --accent: #38bdf8;
+            --accent-2: #22d3ee;
+            --accent-3: #a78bfa;
+            --shadow-sm: 0 10px 24px rgba(0, 0, 0, 0.26);
+            --shadow-md: 0 18px 45px rgba(0, 0, 0, 0.38);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* Tema claro (padrão) - tonalidades claras */
-        :root {
-            --bg-color: #fafafa;
-            --surface: #ffffff;
-            --surface-hover: #f0f0f0;
-            --border-light: #eaeaea;
-            --border-accent: #dddddd;
-            --text-primary: #1e1e1e;
-            --text-secondary: #666666;
-            --accent: #007aff;
-            --accent-soft: rgba(0, 122, 255, 0.08);
-            --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.02);
-            --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.06);
-            --icon-favorite: #f5b342;
-            --icon-favorite-inactive: #cccccc;
-            --font-body: 'Manrope', sans-serif;
-            --font-title: 'Sora', sans-serif;
-        }
-
-        /* Tema escuro */
-        body[data-theme="dark"] {
-            --bg-color: #111111;
-            --surface: #1c1c1e;
-            --surface-hover: #2c2c2e;
-            --border-light: #2c2c2e;
-            --border-accent: #3a3a3c;
-            --text-primary: #f2f2f7;
-            --text-secondary: #8e8e93;
-            --accent: #3b9eff;
-            --accent-soft: rgba(59, 158, 255, 0.14);
-            --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.3);
-            --shadow-hover: 0 8px 28px rgba(0, 0, 0, 0.5);
-            --icon-favorite-inactive: #48484a;
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: var(--font-body);
-            background-color: var(--bg-color);
-            color-scheme: light;
             min-height: 100vh;
-            padding: clamp(16px, 3vw, 40px) clamp(12px, 4vw, 32px);
-            color: var(--text-primary);
+            font-family: var(--font-body);
+            color: var(--text);
+            background:
+                radial-gradient(circle at top left, rgba(37, 99, 235, 0.18), transparent 34rem),
+                radial-gradient(circle at top right, rgba(6, 182, 212, 0.16), transparent 32rem),
+                linear-gradient(145deg, var(--bg), var(--bg-deep));
             line-height: 1.5;
-            transition: background-color 0.3s, color 0.3s;
+            padding: var(--safe-pad);
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
             background-image:
-                radial-gradient(circle at 10% -10%, rgba(0, 122, 255, 0.14), transparent 40%),
-                radial-gradient(circle at 90% 0%, rgba(16, 185, 129, 0.12), transparent 35%);
+                linear-gradient(rgba(100, 116, 139, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(100, 116, 139, 0.08) 1px, transparent 1px);
+            background-size: 42px 42px;
+            mask-image: linear-gradient(to bottom, black, transparent 75%);
+            opacity: 0.5;
+            z-index: -1;
         }
 
-        body[data-theme="dark"] {
-            color-scheme: dark;
+        button,
+        input,
+        select {
+            font: inherit;
         }
 
-        .container {
-            max-width: 1280px;
+        button {
+            border: none;
+        }
+
+        .page {
+            max-width: var(--container);
             margin: 0 auto;
         }
 
-        /* Cabeçalho */
-        .header {
-            text-align: center;
-            margin-bottom: 48px;
-            padding: clamp(20px, 3vw, 34px);
-            border-radius: 24px;
-            background: linear-gradient(140deg, color-mix(in srgb, var(--accent) 10%, var(--surface)) 0%, var(--surface) 65%);
-            border: 1px solid var(--border-light);
+        .hero {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            background:
+                linear-gradient(135deg, rgba(37, 99, 235, 0.14), rgba(6, 182, 212, 0.06) 38%, var(--surface) 100%);
             box-shadow: var(--shadow-sm);
+            backdrop-filter: blur(18px);
+            padding: clamp(22px, 4vw, 46px);
+            margin-bottom: clamp(16px, 3vw, 28px);
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 360px;
+            height: 360px;
+            right: -140px;
+            top: -160px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.34), transparent 62%);
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+            gap: clamp(22px, 4vw, 42px);
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            width: fit-content;
+            padding: 7px 12px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.46);
+            color: var(--accent);
+            font-weight: 800;
+            font-size: 0.78rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        body[data-theme="dark"] .eyebrow {
+            background: rgba(15, 23, 42, 0.48);
         }
 
         .main-title {
             font-family: var(--font-title);
-            font-size: clamp(1.8rem, 5vw, 3.2rem);
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            color: var(--text-primary);
-            margin-bottom: 12px;
-            text-wrap: balance;
-            background: linear-gradient(120deg, var(--text-primary) 10%, color-mix(in srgb, var(--accent) 70%, #22c55e) 95%);
+            font-size: clamp(2.1rem, 6vw, 4.9rem);
+            line-height: 0.96;
+            letter-spacing: -0.06em;
+            max-width: 820px;
+            margin-bottom: 18px;
+            background: linear-gradient(120deg, var(--text), var(--accent), var(--accent-2));
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .subtitle {
-            font-size: clamp(0.95rem, 2vw, 1.2rem);
-            color: var(--text-secondary);
-            max-width: 650px;
-            margin: 0 auto;
-            text-wrap: pretty;
+            max-width: 760px;
+            color: var(--muted);
+            font-size: clamp(1rem, 2vw, 1.18rem);
         }
 
-        /* Barra de ferramentas */
-        .toolbar {
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .primary-jump,
+        .secondary-jump {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 44px;
+            padding: 11px 18px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 800;
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+        }
+
+        .primary-jump {
+            color: #fff;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            box-shadow: 0 16px 32px rgba(37, 99, 235, 0.24);
+        }
+
+        .secondary-jump {
+            color: var(--text);
+            background: var(--surface-solid);
+            border: 1px solid var(--border);
+        }
+
+        .primary-jump:hover,
+        .secondary-jump:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .guide-panel {
+            display: grid;
+            gap: 12px;
+        }
+
+        .guide-card {
+            display: grid;
+            grid-template-columns: 42px minmax(0, 1fr);
+            gap: 12px;
+            align-items: start;
+            padding: 15px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            background: var(--surface);
+            backdrop-filter: blur(14px);
+        }
+
+        .guide-number {
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            font-weight: 900;
+            color: #fff;
+            background: linear-gradient(135deg, var(--accent), var(--accent-3));
+        }
+
+        .guide-card strong {
+            display: block;
+            font-size: 0.96rem;
+            margin-bottom: 2px;
+        }
+
+        .guide-card span {
+            display: block;
+            color: var(--muted);
+            font-size: 0.88rem;
+        }
+
+        .control-center {
             position: sticky;
             top: 12px;
-            z-index: 100;
-            background: rgba(250, 250, 250, 0.88);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--border-light);
-            border-radius: 20px;
-            padding: 24px;
-            margin-bottom: 32px;
+            z-index: 20;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            background: var(--surface);
+            backdrop-filter: blur(18px);
             box-shadow: var(--shadow-sm);
+            padding: clamp(14px, 2.4vw, 22px);
+            margin-bottom: 18px;
         }
 
-        body[data-theme="dark"] .toolbar {
-            background: rgba(28, 28, 30, 0.9);
+        .search-row {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 14px;
         }
 
-        .search-wrapper {
+        .search-box-wrap {
             position: relative;
-            margin-bottom: 20px;
         }
 
         .search-icon {
             position: absolute;
-            left: 18px;
+            left: 16px;
             top: 50%;
             transform: translateY(-50%);
-            color: var(--text-secondary);
+            color: var(--muted-2);
             pointer-events: none;
-            font-size: 1rem;
-            line-height: 1;
+        }
+
+        .search-box {
+            width: 100%;
+            min-height: 54px;
+            padding: 0 48px;
+            border-radius: 18px;
+            border: 1px solid var(--border-strong);
+            background: var(--surface-solid);
+            color: var(--text);
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+        }
+
+        .search-box:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.14);
         }
 
         .search-clear {
@@ -152,771 +323,905 @@
             right: 12px;
             top: 50%;
             transform: translateY(-50%);
-            background: var(--surface-hover);
-            border: none;
-            color: var(--text-secondary);
-            cursor: pointer;
-            width: 26px;
-            height: 26px;
+            width: 31px;
+            height: 31px;
             border-radius: 50%;
-            font-size: 0.8rem;
             display: none;
-            align-items: center;
-            justify-content: center;
-            transition: color 0.2s, background 0.2s;
-            flex-shrink: 0;
-        }
-
-        .search-clear.visible { display: flex; }
-
-        .search-clear:hover {
-            color: var(--text-primary);
-            background: var(--border-accent);
-        }
-
-        .search-box {
-            width: 100%;
-            padding: 14px 46px 14px 46px;
-            border: 1px solid var(--border-accent);
-            border-radius: 40px;
-            font-size: 1rem;
-            font-family: var(--font-body);
-            background: var(--bg-color);
-            color: var(--text-primary);
-            transition: border 0.2s, box-shadow 0.2s;
-        }
-
-        .search-box:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px var(--accent-soft);
-        }
-
-        .controls-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .tabs {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            flex: 2;
-            min-width: 240px;
-        }
-
-        .tab {
-            padding: 8px 18px;
-            border: 1px solid var(--border-accent);
-            background: transparent;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--text-secondary);
+            place-items: center;
+            background: var(--surface-hover);
+            color: var(--muted);
             cursor: pointer;
-            transition: all 0.2s;
         }
 
-        .tab:hover {
-            background: var(--accent-soft);
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-
-        .tab.active {
-            background: var(--accent);
-            border-color: var(--accent);
-            color: #ffffff;
-        }
-
-        .tab[data-category="chat"].active {
-            background: #0ea5e9;
-            border-color: #0ea5e9;
-        }
-
-        .tab[data-category="creative"].active {
-            background: #8b5cf6;
-            border-color: #8b5cf6;
-        }
-
-        .tab[data-category="video"].active {
-            background: #ef4444;
-            border-color: #ef4444;
-        }
-
-        .tab[data-category="productivity"].active {
-            background: #10b981;
-            border-color: #10b981;
-        }
-
-        .tab[data-category="google"].active {
-            background: #f59e0b;
-            border-color: #f59e0b;
-            color: #1f2937;
-        }
-
-        .action-buttons {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .sort-controls {
-            display: flex;
-            gap: 4px;
-            background: var(--surface);
-            border: 1px solid var(--border-accent);
-            border-radius: 30px;
-            padding: 4px;
-        }
-
-        .sort-btn, .theme-btn, .top5-btn {
-            background: transparent;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-            cursor: pointer;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            white-space: nowrap;
-        }
-
-        .sort-btn:hover, .theme-btn:hover, .top5-btn:hover {
-            background: var(--accent-soft);
-            color: var(--accent);
-        }
-
-        .sort-btn.active, .top5-btn.active {
-            background: var(--accent);
-            color: #ffffff;
+        .search-clear.visible {
+            display: grid;
         }
 
         .theme-btn {
-            border: 1px solid var(--border-accent);
+            min-width: 54px;
+            min-height: 54px;
+            border-radius: 18px;
+            border: 1px solid var(--border-strong);
+            background: var(--surface-solid);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: transform 0.2s, background 0.2s;
         }
 
-        /* Result info */
-        .results-info {
-            display: flex;
-            justify-content: space-between;
+        .theme-btn:hover {
+            transform: translateY(-2px);
+            background: var(--surface-hover);
+        }
+
+        .filter-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 12px;
             align-items: center;
-            margin-bottom: 22px;
-            font-size: 1rem;
-            color: var(--text-secondary);
-            padding: 10px 14px;
-            background: linear-gradient(120deg, color-mix(in srgb, var(--accent) 7%, var(--surface)) 0%, var(--surface) 85%);
-            border-radius: 16px;
-            border: 1px solid var(--border-light);
-            box-shadow: var(--shadow-sm);
         }
 
-        .result-count {
-            font-weight: 700;
-            color: var(--accent);
+        .category-strip {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            scrollbar-width: thin;
+            padding-bottom: 2px;
         }
 
+        .category-btn,
+        .action-btn,
         .clear-filters {
-            background: none;
-            border: 1px solid var(--border-accent);
-            border-radius: 30px;
-            color: var(--text-secondary);
-            font-weight: 500;
-            cursor: pointer;
-            padding: 6px 16px;
-            transition: all 0.2s;
-            font-size: 0.85rem;
-        }
-
-        .clear-filters:hover {
-            background: var(--accent-soft);
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-
-        /* Lista de ferramentas - GRID RESPONSIVO (colunas controladas por JS via --grid-cols) */
-        .tools-list {
-            display: grid;
-            grid-template-columns: repeat(var(--grid-cols, 3), 1fr);
-            gap: 20px;
-        }
-
-        .tool-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            background: var(--surface);
-            border: 1px solid var(--border-light);
-            border-radius: 24px;
-            padding: 28px 20px 24px;
-            transition: box-shadow 0.25s, border-color 0.25s, transform 0.25s;
-            box-shadow: var(--shadow-sm);
-            cursor: pointer;
-            height: fit-content;
-            width: 100%;
-            position: relative;
-        }
-
-        .tool-item:hover {
-            border-color: var(--accent);
-            box-shadow: var(--shadow-hover);
-            transform: translateY(-5px);
-        }
-
-        .tool-item:focus-visible {
-            outline: 3px solid var(--accent-soft);
-            outline-offset: 3px;
-        }
-
-        .favorite-icon {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            border: 1px solid var(--border-light);
-            background: var(--surface);
-            display: grid;
-            place-items: center;
-            font-size: 1.15rem;
-            cursor: pointer;
-            color: var(--icon-favorite-inactive);
-            transition: color 0.2s, transform 0.2s, border-color 0.2s, background 0.2s;
-            z-index: 2;
-        }
-
-        .favorite-icon.active {
-            color: var(--icon-favorite);
-        }
-
-        .favorite-icon:hover {
-            transform: scale(1.1);
-            border-color: var(--accent);
-            background: var(--accent-soft);
-        }
-
-        .tool-logo {
-            width: 80px;
-            height: 80px;
-            border-radius: 16px;
-            background: var(--surface);
-            padding: 8px;
-            object-fit: contain;
-            border: 1px solid var(--border-light);
-            margin-bottom: 16px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
-            display: block;
-        }
-
-        .tool-info {
-            width: 100%;
-            flex: 1;
-            margin-bottom: 20px;
-        }
-
-        .tool-header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 6px;
-            margin-bottom: 10px;
-        }
-
-        .tool-name {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            line-height: 1.3;
-            word-break: break-word; /* Quebra palavras longas */
-        }
-
-        .tool-category {
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--text-secondary);
-            background: var(--accent-soft);
-            padding: 4px 12px;
-            border-radius: 30px;
-            border: 1px solid var(--border-accent);
-            display: inline-block;
-            max-width: 100%;
-        }
-
-        /* Cores por categoria */
-        .tool-category[data-cat="chat"]         { color: #0EA5E9; background: rgba(14,165,233,0.08); border-color: rgba(14,165,233,0.25); }
-        .tool-category[data-cat="creative"]     { color: #8B5CF6; background: rgba(139,92,246,0.08); border-color: rgba(139,92,246,0.25); }
-        .tool-category[data-cat="video"]        { color: #EF4444; background: rgba(239,68,68,0.08); border-color: rgba(239,68,68,0.25); }
-        .tool-category[data-cat="productivity"] { color: #10B981; background: rgba(16,185,129,0.08); border-color: rgba(16,185,129,0.25); }
-        .tool-category[data-cat="google"]       { color: #F59E0B; background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.25); }
-
-        .tool-description {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            line-clamp: 2;
-            overflow: hidden;
-            line-height: 1.5;
-            max-width: 90%;
-            margin: 0 auto;
-            word-break: break-word;
-        }
-
-        .tool-action {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-        }
-
-        .tool-link {
+            min-height: 40px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
-            background: transparent;
-            border: 1px solid var(--accent);
-            border-radius: 40px;
-            padding: 10px 24px;
-            font-weight: 500;
-            color: var(--accent);
-            font-family: var(--font-body);
-            font-size: 0.9rem;
+            gap: 7px;
+            border-radius: 999px;
+            padding: 9px 14px;
+            border: 1px solid var(--border);
+            background: var(--surface-solid);
+            color: var(--muted);
             cursor: pointer;
-            transition: background 0.2s, color 0.2s;
-            width: fit-content;
-            min-width: 130px;
+            white-space: nowrap;
+            font-weight: 800;
+            font-size: 0.88rem;
+            transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
         }
 
-        .tool-link:focus-visible,
-        .favorite-icon:focus-visible,
-        .tab:focus-visible,
-        .sort-btn:focus-visible,
-        .top5-btn:focus-visible,
-        .theme-btn:focus-visible,
-        .search-clear:focus-visible,
-        .clear-filters:focus-visible {
-            outline: 3px solid var(--accent-soft);
-            outline-offset: 2px;
+        .category-btn:hover,
+        .action-btn:hover,
+        .clear-filters:hover {
+            transform: translateY(-1px);
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--surface-hover);
         }
 
-        .tool-item:hover .tool-link {
-            background: var(--accent);
-            color: #ffffff;
+        .category-btn.active,
+        .action-btn.active {
+            border-color: transparent;
+            color: #fff;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
         }
 
-        .top5-badge {
+        .quick-actions {
+            display: flex;
+            gap: 8px;
+            justify-content: flex-end;
+        }
+
+        .results-panel {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 18px;
+            padding: 14px 16px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            background: var(--surface);
+            backdrop-filter: blur(14px);
+        }
+
+        .results-text {
+            color: var(--muted);
+            font-weight: 700;
+        }
+
+        .result-count {
+            color: var(--accent);
+            font-weight: 900;
+        }
+
+        .active-context {
+            display: block;
+            margin-top: 3px;
+            font-size: 0.86rem;
+            color: var(--muted-2);
+            font-weight: 600;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 285px), 1fr));
+            gap: clamp(14px, 2vw, 22px);
+        }
+
+        .tool-card {
+            position: relative;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding: 18px;
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--border);
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.64), transparent 42%),
+                var(--surface);
+            box-shadow: var(--shadow-sm);
+            backdrop-filter: blur(16px);
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+        }
+
+        body[data-theme="dark"] .tool-card {
+            background:
+                linear-gradient(180deg, rgba(51, 65, 85, 0.42), transparent 42%),
+                var(--surface);
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: rgba(37, 99, 235, 0.48);
+        }
+
+        .tool-card::before {
+            content: "";
             position: absolute;
-            top: 12px;
-            left: 12px;
-            padding: 4px 10px;
+            inset: 0 0 auto 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-3));
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .tool-card:hover::before {
+            opacity: 1;
+        }
+
+        .card-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 14px;
+        }
+
+        .identity {
+            display: flex;
+            gap: 13px;
+            min-width: 0;
+            align-items: center;
+        }
+
+        .logo-wrap {
+            width: 64px;
+            height: 64px;
+            flex: 0 0 64px;
+            border-radius: 18px;
+            display: grid;
+            place-items: center;
+            border: 1px solid var(--border);
+            background: var(--surface-solid);
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+            overflow: hidden;
+        }
+
+        .tool-logo {
+            width: 76%;
+            height: 76%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .tool-title-area {
+            min-width: 0;
+        }
+
+        .tool-name {
+            display: block;
+            font-size: 1.12rem;
+            font-weight: 900;
+            color: var(--text);
+            line-height: 1.22;
+            margin-bottom: 6px;
+            word-break: break-word;
+        }
+
+        .category-badge {
+            display: inline-flex;
+            align-items: center;
+            width: fit-content;
+            max-width: 100%;
+            padding: 5px 9px;
             border-radius: 999px;
             font-size: 0.72rem;
-            font-weight: 800;
-            letter-spacing: 0.03em;
-            color: #ffffff;
-            background: linear-gradient(135deg, #f97316, #ef4444);
-            box-shadow: 0 8px 18px rgba(239, 68, 68, 0.35);
-            z-index: 2;
+            font-weight: 900;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            border: 1px solid var(--border);
+            background: var(--surface-soft);
+            color: var(--muted);
         }
 
-        body[data-top5="true"] .tool-item {
-            border-color: color-mix(in srgb, var(--accent) 28%, var(--border-light));
-            background: linear-gradient(170deg, color-mix(in srgb, var(--accent) 6%, var(--surface)) 0%, var(--surface) 70%);
+        .category-badge[data-cat="chat"] {
+            color: #0284c7;
+            background: rgba(14, 165, 233, 0.10);
+            border-color: rgba(14, 165, 233, 0.24);
         }
 
-        body[data-top5="true"] .tool-item[data-rank="1"] {
-            border-color: #f97316;
-            box-shadow: 0 14px 30px rgba(249, 115, 22, 0.22);
+        .category-badge[data-cat="creative"] {
+            color: #7c3aed;
+            background: rgba(124, 58, 237, 0.10);
+            border-color: rgba(124, 58, 237, 0.24);
         }
 
-        @media (min-width: 900px) {
-            body[data-top5="true"] .tool-item[data-rank="1"] {
-                grid-column: span 2;
-                text-align: left;
-                align-items: flex-start;
-            }
-
-            body[data-top5="true"] .tool-item[data-rank="1"] .tool-header,
-            body[data-top5="true"] .tool-item[data-rank="1"] .tool-action {
-                align-items: flex-start;
-                justify-content: flex-start;
-            }
-
-            body[data-top5="true"] .tool-item[data-rank="1"] .tool-description {
-                margin: 0;
-                max-width: 100%;
-                -webkit-line-clamp: 3;
-                line-clamp: 3;
-            }
+        .category-badge[data-cat="video"] {
+            color: #dc2626;
+            background: rgba(239, 68, 68, 0.10);
+            border-color: rgba(239, 68, 68, 0.24);
         }
 
-        /* Layout editorial (aplicado fora do modo Top 5) */
-        @media (min-width: 1100px) {
-            body[data-editorial="true"]:not([data-top5="true"]) .tool-item[data-layout="hero"] {
-                grid-column: span 2;
-                text-align: left;
-                align-items: flex-start;
-                border-color: color-mix(in srgb, var(--accent) 35%, var(--border-light));
-                background: linear-gradient(165deg, color-mix(in srgb, var(--accent) 9%, var(--surface)) 0%, var(--surface) 70%);
-            }
-
-            body[data-editorial="true"]:not([data-top5="true"]) .tool-item[data-layout="hero"] .tool-header,
-            body[data-editorial="true"]:not([data-top5="true"]) .tool-item[data-layout="hero"] .tool-action {
-                align-items: flex-start;
-                justify-content: flex-start;
-            }
-
-            body[data-editorial="true"]:not([data-top5="true"]) .tool-item[data-layout="hero"] .tool-description {
-                max-width: 100%;
-                margin: 0;
-                -webkit-line-clamp: 3;
-                line-clamp: 3;
-            }
-
-            body[data-editorial="true"]:not([data-top5="true"]) .tool-item[data-layout="wide"] {
-                grid-column: span 2;
-            }
+        .category-badge[data-cat="productivity"] {
+            color: #059669;
+            background: rgba(16, 185, 129, 0.10);
+            border-color: rgba(16, 185, 129, 0.24);
         }
 
-        .editorial-badge {
+        .favorite-btn {
+            width: 40px;
+            height: 40px;
+            flex: 0 0 40px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            background: var(--surface-solid);
+            border: 1px solid var(--border);
+            color: var(--muted-2);
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: transform 0.2s, color 0.2s, background 0.2s;
+        }
+
+        .favorite-btn:hover {
+            transform: scale(1.06);
+            background: rgba(245, 158, 11, 0.12);
+            color: var(--favorite);
+        }
+
+        .favorite-btn.active {
+            color: var(--favorite);
+        }
+
+        .tool-description {
+            color: var(--muted);
+            font-size: 0.93rem;
+        }
+
+        .use-case {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            padding: 11px 12px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            background: var(--surface-soft);
+            color: var(--muted);
+            font-size: 0.86rem;
+            margin-top: auto;
+        }
+
+        .use-case strong {
+            color: var(--text);
+        }
+
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding-top: 2px;
+        }
+
+        .open-btn {
+            min-height: 42px;
+            width: 100%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            color: #fff;
+            font-weight: 900;
+            cursor: pointer;
+            transition: filter 0.2s, transform 0.2s;
+        }
+
+        .open-btn:hover {
+            filter: brightness(1.05);
+            transform: translateY(-1px);
+        }
+
+        .top-badge,
+        .recommended-badge {
             position: absolute;
             top: 12px;
             left: 12px;
-            padding: 4px 10px;
-            border-radius: 999px;
-            font-size: 0.7rem;
-            font-weight: 800;
-            letter-spacing: 0.04em;
-            color: #ffffff;
-            background: linear-gradient(135deg, #0ea5e9, #22c55e);
-            box-shadow: 0 8px 18px rgba(14, 165, 233, 0.28);
             z-index: 2;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 28px;
+            padding: 5px 10px;
+            border-radius: 999px;
+            color: #fff;
+            font-size: 0.72rem;
+            font-weight: 900;
+            letter-spacing: 0.04em;
+            background: linear-gradient(135deg, #f97316, #ef4444);
+            box-shadow: 0 10px 22px rgba(239, 68, 68, 0.26);
+        }
+
+        .recommended-badge {
+            background: linear-gradient(135deg, #2563eb, #06b6d4);
+            box-shadow: 0 10px 22px rgba(37, 99, 235, 0.24);
+        }
+
+        .tool-card.has-badge .card-top {
+            margin-top: 26px;
         }
 
         .no-results {
             grid-column: 1 / -1;
             text-align: center;
-            padding: 60px 20px;
+            padding: clamp(34px, 7vw, 72px) 18px;
+            border: 1px dashed var(--border-strong);
+            border-radius: var(--radius-xl);
             background: var(--surface);
-            border: 1px dashed var(--border-accent);
-            border-radius: 24px;
-            color: var(--text-secondary);
-            font-size: 1.2rem;
+            color: var(--muted);
+        }
+
+        .no-results-icon {
+            display: block;
+            font-size: 2.8rem;
+            margin-bottom: 12px;
         }
 
         .footer {
+            margin-top: clamp(34px, 5vw, 64px);
+            padding: 24px 0 8px;
+            color: var(--muted);
             text-align: center;
-            margin-top: 60px;
-            padding-top: 24px;
-            border-top: 1px solid var(--border-light);
-            color: var(--text-secondary);
             font-size: 0.9rem;
+            border-top: 1px solid var(--border);
         }
 
-        /* Animação de entrada dos cards (usa 'translate' como prop. separada, sem conflito com hover transform) */
-        @keyframes cardIn {
-            from { opacity: 0; translate: 0 18px; }
-            to   { opacity: 1; translate: 0 0; }
-        }
-        .tool-item { animation: cardIn 0.3s ease both; }
-
-        /* Respeita preferência de redução de movimento */
-        @media (prefers-reduced-motion: reduce) {
-            .tool-item { animation: none; }
-            .tool-item, .tool-link, .tab, .sort-btn, .top5-btn, .scroll-top, body {
-                transition: none !important;
-            }
-        }
-
-        /* Botão voltar ao topo */
         .scroll-top {
             position: fixed;
-            bottom: 28px;
-            right: 28px;
-            width: 46px;
-            height: 46px;
-            border-radius: 50%;
-            background: var(--accent);
-            color: #fff;
-            border: none;
+            right: 22px;
+            bottom: 22px;
+            width: 48px;
+            height: 48px;
+            border-radius: 18px;
+            display: grid;
+            place-items: center;
             cursor: pointer;
-            font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 20px rgba(0, 122, 255, 0.4);
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            color: #fff;
+            box-shadow: 0 14px 30px rgba(37, 99, 235, 0.28);
             opacity: 0;
-            transform: translateY(12px) scale(0.85);
-            transition: opacity 0.3s, transform 0.3s;
             pointer-events: none;
-            z-index: 200;
+            transform: translateY(12px);
+            transition: opacity 0.2s, transform 0.2s;
+            z-index: 50;
         }
+
         .scroll-top.visible {
             opacity: 1;
-            transform: translateY(0) scale(1);
             pointer-events: auto;
-        }
-        .scroll-top:hover {
-            transform: translateY(-3px) scale(1.08);
-            box-shadow: 0 6px 24px rgba(0, 122, 255, 0.5);
+            transform: translateY(0);
         }
 
-        /* Estado vazio */
-        .no-results-icon {
-            font-size: 3rem;
-            display: block;
-            margin-bottom: 16px;
-            opacity: 0.5;
+        .category-btn:focus-visible,
+        .action-btn:focus-visible,
+        .clear-filters:focus-visible,
+        .theme-btn:focus-visible,
+        .search-box:focus-visible,
+        .favorite-btn:focus-visible,
+        .open-btn:focus-visible,
+        .scroll-top:focus-visible,
+        .primary-jump:focus-visible,
+        .secondary-jump:focus-visible,
+        .search-clear:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, 0.22);
+            outline-offset: 3px;
         }
 
-        /* ===== RESPONSIVIDADE COMPLETA =====
-           O número de colunas do grid (––grid-cols) é controlado por JS via ResizeObserver.
-           Os media queries cuidam apenas de layout/tipografia/espaçamentos. */
+        @keyframes cardIn {
+            from {
+                opacity: 0;
+                transform: translateY(14px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-        /* Tablet portrait / notebooks (≤768px) */
-        @media (max-width: 768px) {
-            .header {
-                margin-bottom: 32px;
+        .tool-card {
+            animation: cardIn 0.28s ease both;
+        }
+
+        @media (min-width: 1050px) {
+            body[data-mode="top5"] .tool-card:first-child {
+                grid-column: span 2;
+                min-height: 340px;
             }
 
-            .toolbar {
-                padding: 20px;
+            body[data-mode="top5"] .tool-card:first-child .tool-name {
+                font-size: 1.45rem;
             }
 
-            .tools-list {
-                gap: 16px;
+            body[data-mode="top5"] .tool-card:first-child .tool-description {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 980px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
             }
 
-            .tabs {
+            .guide-panel {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .filter-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-actions {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 2px;
+            }
+        }
+
+        @media (max-width: 720px) {
+            body {
+                padding: 12px;
+            }
+
+            .hero {
+                border-radius: 24px;
+            }
+
+            .guide-panel {
+                grid-template-columns: 1fr;
+            }
+
+            .control-center {
+                top: 8px;
+                border-radius: 24px;
+            }
+
+            .search-row {
+                grid-template-columns: 1fr auto;
+            }
+
+            .results-panel {
+                grid-template-columns: 1fr;
+            }
+
+            .clear-filters {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .hero-actions {
                 display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 8px;
-                flex: none;
+                grid-template-columns: 1fr;
+            }
+
+            .primary-jump,
+            .secondary-jump {
                 width: 100%;
-            }
-
-            .tab {
-                width: 100%;
-                padding: 8px 6px;
-                font-size: 0.85rem;
-                white-space: nowrap;
-                text-overflow: ellipsis;
-                overflow: hidden;
-                text-align: center;
-            }
-
-            .controls-row {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .action-buttons {
-                justify-content: center;
-            }
-
-            .sort-controls {
-                width: 100%;
-                justify-content: center;
-            }
-        }
-
-        /* Smartphone grande (≤600px) */
-        @media (max-width: 600px) {
-            .tools-list {
-                gap: 12px;
-            }
-
-            .tool-item {
-                padding: 18px 14px;
-            }
-
-            .tool-logo {
-                width: 64px;
-                height: 64px;
-            }
-
-            .tool-name {
-                font-size: 1.1rem;
-            }
-
-            .tool-description {
-                font-size: 0.85rem;
-                max-width: 100%;
-            }
-
-            .tool-link {
-                min-width: 110px;
-                padding: 9px 18px;
-                font-size: 0.85rem;
-            }
-
-            .tool-category {
-                white-space: nowrap;
-                max-width: 90%;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-        }
-
-        /* Smartphone (≤480px) */
-        @media (max-width: 480px) {
-            .tool-item {
-                padding: 20px 16px;
-            }
-
-            .toolbar {
-                padding: 16px;
             }
 
             .search-box {
-                padding: 12px 42px;
-                font-size: 0.95rem;
+                min-height: 50px;
+                border-radius: 16px;
+                padding-left: 44px;
             }
 
-            .tool-logo {
-                width: 60px;
-                height: 60px;
+            .theme-btn {
+                min-width: 50px;
+                min-height: 50px;
+                border-radius: 16px;
             }
 
-            .tool-link {
-                min-width: 100px;
-                padding: 8px 16px;
+            .category-strip,
+            .quick-actions {
+                margin-left: -2px;
+                margin-right: -2px;
+                padding-left: 2px;
+                padding-right: 2px;
             }
 
-            .results-info {
-                flex-direction: column;
-                gap: 8px;
-                text-align: center;
+            .tool-card {
+                padding: 16px;
+                border-radius: 24px;
+            }
+
+            .logo-wrap {
+                width: 58px;
+                height: 58px;
+                flex-basis: 58px;
+                border-radius: 16px;
+            }
+
+            .tool-name {
+                font-size: 1.04rem;
+            }
+
+            .card-top {
+                gap: 10px;
+            }
+
+            .identity {
+                gap: 10px;
+            }
+
+            .favorite-btn {
+                width: 38px;
+                height: 38px;
+                flex-basis: 38px;
             }
         }
 
-        /* Telas muito pequenas (≤360px) */
-        @media (max-width: 360px) {
-            .tabs {
-                grid-template-columns: repeat(2, 1fr);
+        @media (max-width: 380px) {
+            .main-title {
+                font-size: 2rem;
             }
 
-            .tab {
-                font-size: 0.8rem;
-                padding: 7px 4px;
+            .category-btn,
+            .action-btn {
+                font-size: 0.82rem;
+                padding-inline: 12px;
             }
 
-            .tool-item {
-                padding: 16px 12px;
+            .identity {
+                align-items: flex-start;
+            }
+
+            .logo-wrap {
+                width: 52px;
+                height: 52px;
+                flex-basis: 52px;
             }
         }
 
-        /* Indicador de breakpoint (canto inferior direito, visível apenas em dev) */
-        #screen-indicator {
-            display: none;
-        }
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
 
-        /* Correcões para logo sem src válido */
-        .tool-logo[src=""],
-        .tool-logo:not([src]),
-        .tool-logo[src="#"] {
-            background: linear-gradient(135deg, var(--surface-hover), var(--border-accent));
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+            }
         }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <header class="header">
-            <h1 class="main-title">Inteligência Artificial</h1>
-            <p class="subtitle">Ferramentas selecionadas para turbinar sua criatividade, produtividade e conhecimento.</p>
-        </header>
+    <main class="page">
+        <section class="hero" aria-labelledby="pageTitle">
+            <div class="hero-grid">
+                <div>
+                    <span class="eyebrow">Hub de ferramentas inteligentes</span>
+                    <h1 class="main-title" id="pageTitle">Inteligência Artificial</h1>
+                    <p class="subtitle">
+                        Encontre rapidamente ferramentas de IA para conversar, pesquisar, criar imagens, produzir vídeos,
+                        organizar estudos, desenvolver ideias e aumentar a produtividade.
+                    </p>
 
-        <div class="toolbar">
-            <div class="search-wrapper">
-                <span class="search-icon" aria-hidden="true">🔍</span>
-                <input type="text" class="search-box" id="searchInput" placeholder="Buscar ferramentas por nome ou descrição..." aria-label="Buscar ferramentas">
-                <button class="search-clear" id="searchClear" aria-label="Limpar busca">✕</button>
-            </div>
-            
-            <div class="controls-row">
-                <div class="tabs" id="categoryTabs">
-                    <button class="tab active" data-category="all">Todas</button>
-                    <button class="tab" data-category="chat">Chat</button>
-                    <button class="tab" data-category="creative">Criativas</button>
-                    <button class="tab" data-category="video">Vídeo</button>
-                    <button class="tab" data-category="productivity">Produtividade</button>
-                    <button class="tab" data-category="google">Google</button>
-                </div>
-
-                <div class="action-buttons">
-                    <div class="sort-controls">
-                        <button class="sort-btn active" data-sort="alpha">A-Z</button>
-                        <button class="sort-btn" data-sort="favorite">⭐ Favoritos</button>
+                    <div class="hero-actions">
+                        <a class="primary-jump" href="#explorar">Explorar ferramentas ↓</a>
+                        <a class="secondary-jump" href="#filtros">Filtrar por objetivo</a>
                     </div>
-                    <button class="top5-btn" id="top5Btn">🔥 Top 5</button>
-                    <button class="theme-btn" id="themeToggle" aria-label="Alternar tema">🌓</button>
+                </div>
+
+                <aside class="guide-panel" aria-label="Guia rápido de uso">
+                    <div class="guide-card">
+                        <span class="guide-number">1</span>
+                        <div>
+                            <strong>Busque pelo que precisa</strong>
+                            <span>Digite o nome da ferramenta ou uma função, como vídeo, pesquisa ou música.</span>
+                        </div>
+                    </div>
+
+                    <div class="guide-card">
+                        <span class="guide-number">2</span>
+                        <div>
+                            <strong>Use as categorias</strong>
+                            <span>Separe ferramentas de chat, criação, vídeo, produtividade ou Google.</span>
+                        </div>
+                    </div>
+
+                    <div class="guide-card">
+                        <span class="guide-number">3</span>
+                        <div>
+                            <strong>Salve favoritas</strong>
+                            <span>Marque as ferramentas mais úteis para acessá-las com menos esforço.</span>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <section class="control-center" id="filtros" aria-label="Filtros e busca">
+            <div class="search-row">
+                <div class="search-box-wrap">
+                    <span class="search-icon" aria-hidden="true">⌕</span>
+                    <input
+                        type="text"
+                        class="search-box"
+                        id="searchInput"
+                        placeholder="Buscar por nome, função ou objetivo..."
+                        aria-label="Buscar ferramentas de inteligência artificial"
+                        autocomplete="off"
+                    >
+                    <button class="search-clear" id="searchClear" aria-label="Limpar busca">×</button>
+                </div>
+
+                <button class="theme-btn" id="themeToggle" aria-label="Alternar tema">☾</button>
+            </div>
+
+            <div class="filter-layout">
+                <div class="category-strip" id="categoryTabs" aria-label="Categorias de ferramentas"></div>
+
+                <div class="quick-actions" aria-label="Ações rápidas">
+                    <button class="action-btn" id="favoriteFilterBtn" type="button" aria-pressed="false">⭐ Favoritas</button>
+                    <button class="action-btn" id="top5Btn" type="button" aria-pressed="false">🔥 Top 5</button>
+                    <button class="action-btn" id="azBtn" type="button" aria-pressed="true">A-Z</button>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="results-info">
-            <span><span class="result-count" id="resultCount">0</span> ferramentas encontradas</span>
-            <button class="clear-filters" id="clearFilters">Limpar filtros</button>
-        </div>
+        <section class="results-panel" id="explorar" aria-live="polite">
+            <div class="results-text">
+                <span class="result-count" id="resultCount">0</span> ferramentas encontradas
+                <span class="active-context" id="activeContext">Exibindo todas as categorias.</span>
+            </div>
 
-        <div class="tools-list" id="toolsList"></div>
+            <button class="clear-filters" id="clearFilters" type="button">Limpar busca e filtros</button>
+        </section>
+
+        <section class="tools-grid" id="toolsList" aria-label="Lista de ferramentas de IA"></section>
 
         <footer class="footer">
-            <p>© 2026 · Atualizado regularmente!</p>
+            <p>© 2026 · Área do Aluno – Prof. Ravell · Ferramentas de Inteligência Artificial</p>
         </footer>
 
         <button class="scroll-top" id="scrollTop" aria-label="Voltar ao topo">↑</button>
-    </div>
+    </main>
 
     <script>
-        (function() {
-            // ---------- BASE DE DADOS DAS FERRAMENTAS ----------
+        (function () {
             const tools = [
-                { name: "ChatGPT", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMdM9MEQ0ExL1PmInT3U5I8v63YXBEdoIT0Q&s", category: "chat", description: "Assistente geral para conversas, criação de texto e suporte.", url: "https://chatgpt.com/" },
-                { name: "Gemini", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThr7qrIazsvZwJuw-uZCtLzIjaAyVW_ZrlEQ&s", category: "chat", description: "IA do Google integrada ao ecossistema Workspace e pesquisas.", url: "https://gemini.google.com/app" },
-                { name: "Copilot", logo: "https://play-lh.googleusercontent.com/p8R1lAZI5_WCOzmvBYnOQasCWcjc9d2vM7z4PaVku8b9AfxGhqQqM0ldJ8KULHblVj-g", category: "chat", description: "Assistente da Microsoft para código, texto e busca.", url: "https://copilot.microsoft.com/" },
-                { name: "Deepseek", logo: "https://cdn.worldvectorlogo.com/logos/deepseek-2.svg", category: "chat", description: "Focado em programação e raciocínio lógico profundo.", url: "https://chat.deepseek.com/" },
-                { name: "Qwen", logo: "https://crystalpng.com/wp-content/uploads/2025/02/Qwen-05.png", category: "chat", description: "Modelo da Alibaba para tarefas diversas e suporte multilíngue.", url: "https://qwen.ai/home" },
-                { name: "Grok", logo: "https://img.icons8.com/color/1200/grok--v2.jpg", category: "chat", description: "Assistente de IA da xAI com respostas diretas e atualizadas.", url: "https://grok.com/" },
-                { name: "Claude", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnM91o7r1wba01xcHW15PLqbe-ONaTIjOO3g&s", category: "chat", description: "Assistente de IA da Anthropic, especializado em conversas seguras e detalhadas.", url: "https://claude.ai/new" },
-                { name: "Suno", logo: "https://images.seeklogo.com/logo-png/52/2/suno-ai-logo-png_seeklogo-528379.png", category: "creative", description: "Criação de músicas e áudio com IA generativa.", url: "https://suno.com/" },
-                { name: "Jules", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvAXEz4EsU3RQHCV96BAfJusei09ZBjQOG2g&s", category: "creative", description: "Geração e edição de imagens por comandos de texto.", url: "https://jules.google.com/task" },
-                { name: "Manus AI", logo: "https://play-lh.googleusercontent.com/7RIeDBEnjVVn3d1yr441p7u0BK9eT8E6P9i__XYTcJAzOe7sqVgJp7pmlypqY9NBqjI", category: "creative", description: "Design gráfico e edição profissional com IA.", url: "https://manus.im/app" },
-                { name: "LM Arena", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxPgTgdL2Ttbt9TCA8vYFPsFOqz_Dppec8gg&s", category: "creative", description: "Comparação lado a lado de grandes modelos de linguagem.", url: "https://lmarena.ai/?mode=direct" },
-                { name: "Wan", logo: "https://catai.com.br/wp-content/uploads/2025/08/Wan-01.jpg", category: "video", description: "Criação automática de vídeos a partir de roteiros.", url: "https://create.wan.video/" },
-                { name: "Vids", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Google_Vids_2024_Logo.svg/250px-Google_Vids_2024_Logo.svg.png", category: "video", description: "Ferramenta do Google Workspace para edição e criação de vídeos.", url: "https://workspace.google.com/intl/pt-BR/products/vids/" },
-                { name: "Perplexity", logo: "https://images.seeklogo.com/logo-png/61/2/perplexity-ai-icon-black-logo-png_seeklogo-611679.png", category: "productivity", description: "Mecanismo de busca com respostas geradas por IA.", url: "https://www.perplexity.ai/" },
-                { name: "NotebookLM", logo: "https://static1.xdaimages.com/wordpress/wp-content/uploads/2025/03/notebooklm-removebg-preview.png", category: "productivity", description: "Organização de notas e resumos com base nos seus documentos.", url: "https://notebooklm.google.com/" },
-                { name: "Google AI Studio", logo: "https://pbs.twimg.com/profile_images/1957558782067896323/6jXpPKD4_400x400.png", category: "productivity", description: "Plataforma para desenvolver e testar modelos de IA do Google, com acesso a APIs e ferramentas.", url: "https://aistudio.google.com/?project=gen-lang-client-0962495001" },
-                { name: "AI Free Forever", logo: "https://aifreeforever.com/logo.png", category: "productivity", description: "Plataforma com acesso gratuito a diversas ferramentas de IA para produtividade e criatividade.", url: "https://aifreeforever.com/" },
-                { name: "Flow", logo: "https://vectorseek.com/wp-content/uploads/2025/09/Google-flow-Logo-PNG-SVG-Vector-1.png", category: "creative", description: "Ferramenta experimental do Google para criação de fluxos e automações visuais com IA.", url: "https://labs.google/fx/pt/tools/flow" },
-                { name: "Kimi", logo: "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/kimi-ai-icon.png", category: "chat", description: "Assistente de IA com suporte a longos contextos e análise de documentos.", url: "https://www.kimi.com/" },
-                // Midjourney com a nova logo
-                { name: "Midjourney", logo: "https://images.seeklogo.com/logo-png/50/2/midjourney-logo-png_seeklogo-501203.png", category: "creative", description: "Geração de imagens artísticas de alta qualidade a partir de descrições textuais.", url: "https://www.midjourney.com/" },
-                // DeepHat
-                { name: "DeepHat", logo: "https://app.deephat.ai/_next/static/media/logomark_dark.49026cc4.svg", category: "productivity", description: "Plataforma de IA para análise profunda, automação de tarefas e insights baseados em dados.", url: "https://app.deephat.ai/" }
-            ];
-
-            // Lista de ferramentas do Google (para a nova aba)
-            const googleToolsNames = [
-                "Gemini",
-                "Jules",
-                "Vids",
-                "NotebookLM",
-                "Google AI Studio",
-                "Flow"
+                {
+                    name: "ChatGPT",
+                    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMdM9MEQ0ExL1PmInT3U5I8v63YXBEdoIT0Q&s",
+                    category: "chat",
+                    description: "Assistente geral para conversas, criação de texto, explicações, ideias e apoio em tarefas complexas.",
+                    useCase: "Melhor para tirar dúvidas, escrever, revisar textos, estudar e organizar ideias.",
+                    url: "https://chatgpt.com/",
+                    recommended: true,
+                    rank: 1
+                },
+                {
+                    name: "Gemini",
+                    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThr7qrIazsvZwJuw-uZCtLzIjaAyVW_ZrlEQ&s",
+                    category: "chat",
+                    description: "IA do Google integrada a pesquisas, documentos e recursos do ecossistema Workspace.",
+                    useCase: "Melhor para quem usa serviços do Google e quer integração com busca e produtividade.",
+                    url: "https://gemini.google.com/app",
+                    recommended: true,
+                    rank: 2
+                },
+                {
+                    name: "Copilot",
+                    logo: "https://play-lh.googleusercontent.com/p8R1lAZI5_WCOzmvBYnOQasCWcjc9d2vM7z4PaVku8b9AfxGhqQqM0ldJ8KULHblVj-g",
+                    category: "chat",
+                    description: "Assistente da Microsoft para texto, pesquisa, produtividade e apoio em fluxos de trabalho.",
+                    useCase: "Melhor para usuários do Windows, Edge, Office e serviços Microsoft.",
+                    url: "https://copilot.microsoft.com/",
+                    recommended: true,
+                    rank: 5
+                },
+                {
+                    name: "Deepseek",
+                    logo: "https://cdn.worldvectorlogo.com/logos/deepseek-2.svg",
+                    category: "chat",
+                    description: "Modelo de IA voltado para raciocínio, programação, análise técnica e resolução de problemas.",
+                    useCase: "Melhor para lógica, códigos, matemática, análise técnica e explicações estruturadas.",
+                    url: "https://chat.deepseek.com/",
+                    rank: 8
+                },
+                {
+                    name: "Qwen",
+                    logo: "https://crystalpng.com/wp-content/uploads/2025/02/Qwen-05.png",
+                    category: "chat",
+                    description: "Modelo da Alibaba para tarefas gerais, conversação, escrita e suporte multilíngue.",
+                    useCase: "Melhor para experimentar modelos alternativos e comparar respostas.",
+                    url: "https://qwen.ai/home",
+                    rank: 10
+                },
+                {
+                    name: "Grok",
+                    logo: "https://img.icons8.com/color/1200/grok--v2.jpg",
+                    category: "chat",
+                    description: "Assistente da xAI com foco em respostas diretas, linguagem objetiva e temas atuais.",
+                    useCase: "Melhor para conversas rápidas, atualidades e respostas mais informais.",
+                    url: "https://grok.com/",
+                    rank: 11
+                },
+                {
+                    name: "Claude",
+                    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnM91o7r1wba01xcHW15PLqbe-ONaTIjOO3g&s",
+                    category: "chat",
+                    description: "Assistente da Anthropic para conversas longas, análise de conteúdo e escrita detalhada.",
+                    useCase: "Melhor para documentos extensos, revisão, escrita longa e análise cuidadosa.",
+                    url: "https://claude.ai/new",
+                    rank: 6
+                },
+                {
+                    name: "Kimi",
+                    logo: "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/kimi-ai-icon.png",
+                    category: "chat",
+                    description: "Assistente de IA com suporte a contextos longos, leitura de arquivos e análise documental.",
+                    useCase: "Melhor para analisar documentos grandes e conversas com muito contexto.",
+                    url: "https://www.kimi.com/",
+                    rank: 12
+                },
+                {
+                    name: "Suno",
+                    logo: "https://images.seeklogo.com/logo-png/52/2/suno-ai-logo-png_seeklogo-528379.png",
+                    category: "creative",
+                    description: "Ferramenta de criação de músicas, vozes e composições por comandos de texto.",
+                    useCase: "Melhor para criar músicas, vinhetas, trilhas e ideias sonoras.",
+                    url: "https://suno.com/",
+                    rank: 9
+                },
+                {
+                    name: "Jules",
+                    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvAXEz4EsU3RQHCV96BAfJusei09ZBjQOG2g&s",
+                    category: "creative",
+                    description: "Ferramenta do Google voltada para criação, desenvolvimento e apoio em tarefas digitais.",
+                    useCase: "Melhor para explorar recursos experimentais de IA do Google.",
+                    url: "https://jules.google.com/task",
+                    rank: 13
+                },
+                {
+                    name: "Manus AI",
+                    logo: "https://play-lh.googleusercontent.com/7RIeDBEnjVVn3d1yr441p7u0BK9eT8E6P9i__XYTcJAzOe7sqVgJp7pmlypqY9NBqjI",
+                    category: "creative",
+                    description: "Plataforma de IA para criação, automação e execução de tarefas em múltiplas etapas.",
+                    useCase: "Melhor para fluxos criativos, organização de tarefas e automações assistidas.",
+                    url: "https://manus.im/app",
+                    rank: 14
+                },
+                {
+                    name: "LM Arena",
+                    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxPgTgdL2Ttbt9TCA8vYFPsFOqz_Dppec8gg&s",
+                    category: "creative",
+                    description: "Ambiente para comparar respostas de diferentes modelos de linguagem lado a lado.",
+                    useCase: "Melhor para testar qual modelo responde melhor a uma mesma pergunta.",
+                    url: "https://lmarena.ai/?mode=direct",
+                    rank: 15
+                },
+                {
+                    name: "Midjourney",
+                    logo: "https://images.seeklogo.com/logo-png/50/2/midjourney-logo-png_seeklogo-501203.png",
+                    category: "creative",
+                    description: "Geração de imagens artísticas e visuais sofisticados a partir de descrições textuais.",
+                    useCase: "Melhor para imagens conceituais, artes digitais, capas e composições visuais.",
+                    url: "https://www.midjourney.com/",
+                    rank: 7
+                },
+                {
+                    name: "Flow",
+                    logo: "https://vectorseek.com/wp-content/uploads/2025/09/Google-flow-Logo-PNG-SVG-Vector-1.png",
+                    category: "creative",
+                    description: "Ferramenta experimental do Google para criação de fluxos, ideias visuais e automações.",
+                    useCase: "Melhor para testar recursos criativos e experimentais do Google Labs.",
+                    url: "https://labs.google/fx/pt/tools/flow",
+                    rank: 16
+                },
+                {
+                    name: "Wan",
+                    logo: "https://catai.com.br/wp-content/uploads/2025/08/Wan-01.jpg",
+                    category: "video",
+                    description: "Plataforma para criação automática de vídeos a partir de roteiros, comandos e ideias.",
+                    useCase: "Melhor para gerar vídeos rápidos, cenas curtas e materiais audiovisuais.",
+                    url: "https://create.wan.video/",
+                    rank: 17
+                },
+                {
+                    name: "Vids",
+                    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Google_Vids_2024_Logo.svg/250px-Google_Vids_2024_Logo.svg.png",
+                    category: "video",
+                    description: "Ferramenta do Google Workspace para criação, edição e apresentação de vídeos.",
+                    useCase: "Melhor para vídeos explicativos, apresentações internas e materiais educacionais.",
+                    url: "https://workspace.google.com/intl/pt-BR/products/vids/",
+                    rank: 18
+                },
+                {
+                    name: "Perplexity",
+                    logo: "https://images.seeklogo.com/logo-png/61/2/perplexity-ai-icon-black-logo-png_seeklogo-611679.png",
+                    category: "productivity",
+                    description: "Mecanismo de busca com IA para perguntas, pesquisa, síntese de informações e referências.",
+                    useCase: "Melhor para pesquisar assuntos, comparar informações e obter respostas contextualizadas.",
+                    url: "https://www.perplexity.ai/",
+                    recommended: true,
+                    rank: 4
+                },
+                {
+                    name: "NotebookLM",
+                    logo: "https://static1.xdaimages.com/wordpress/wp-content/uploads/2025/03/notebooklm-removebg-preview.png",
+                    category: "productivity",
+                    description: "Ferramenta do Google para resumir, organizar e estudar conteúdos a partir de documentos.",
+                    useCase: "Melhor para transformar PDFs, apostilas e textos em resumos, mapas e estudos.",
+                    url: "https://notebooklm.google.com/",
+                    recommended: true,
+                    rank: 3
+                },
+                {
+                    name: "Google AI Studio",
+                    logo: "https://pbs.twimg.com/profile_images/1957558782067896323/6jXpPKD4_400x400.png",
+                    category: "productivity",
+                    description: "Ambiente para testar, configurar e desenvolver soluções com modelos de IA do Google.",
+                    useCase: "Melhor para usuários mais técnicos, testes de prompts, APIs e protótipos.",
+                    url: "https://aistudio.google.com/",
+                    rank: 19
+                },
+                {
+                    name: "AI Free Forever",
+                    logo: "https://aifreeforever.com/logo.png",
+                    category: "productivity",
+                    description: "Plataforma com acesso a diversas ferramentas de IA para criatividade e produtividade.",
+                    useCase: "Melhor para explorar ferramentas gratuitas e alternativas em um único lugar.",
+                    url: "https://aifreeforever.com/",
+                    rank: 20
+                },
+                {
+                    name: "DeepHat",
+                    logo: "https://app.deephat.ai/_next/static/media/logomark_dark.49026cc4.svg",
+                    category: "productivity",
+                    description: "Plataforma de IA para análise, automação, produtividade e extração de insights.",
+                    useCase: "Melhor para análise de dados, automação e organização de informações.",
+                    url: "https://app.deephat.ai/",
+                    rank: 21
+                }
             ];
 
             const categoryNames = {
@@ -928,427 +1233,434 @@
                 google: "Google"
             };
 
-            // Elementos DOM
-            const toolsListEl = document.getElementById('toolsList');
-            const searchInput = document.getElementById('searchInput');
-            const searchClear = document.getElementById('searchClear');
-            const tabs = document.querySelectorAll('.tab');
-            const resultCountSpan = document.getElementById('resultCount');
-            const clearBtn = document.getElementById('clearFilters');
-            const sortBtns = document.querySelectorAll('.sort-btn');
-            const top5Btn = document.getElementById('top5Btn');
-            const themeToggle = document.getElementById('themeToggle');
-            const scrollTopBtn = document.getElementById('scrollTop');
+            const categoryIcons = {
+                all: "✦",
+                chat: "💬",
+                creative: "🎨",
+                video: "🎬",
+                productivity: "⚙",
+                google: "G"
+            };
 
-            // Estado
-            let activeCategory = 'all';
-            let searchTerm = '';
-            let sortMode = 'alpha';
-            let favoriteFilterActive = false;
-            let top5Mode = false;
-            let favorites = (() => { try { return JSON.parse(localStorage.getItem('iaFavorites')) || {}; } catch { return {}; } })();
-            let usageCount = (() => { try { return JSON.parse(localStorage.getItem('iaUsageCount')) || {}; } catch { return {}; } })();
-            let isDark = (() => { try { const s = localStorage.getItem('iaDarkMode'); return s !== null ? s === 'true' : window.matchMedia('(prefers-color-scheme: dark)').matches; } catch { return false; } })();
+            const googleToolsNames = ["Gemini", "Jules", "Vids", "NotebookLM", "Google AI Studio", "Flow"];
 
-            // ---------- FUNÇÕES ----------
-            function saveFavorites() {
-                localStorage.setItem('iaFavorites', JSON.stringify(favorites));
+            const FALLBACK_LOGO =
+                "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%232563eb'/%3E%3Cstop offset='1' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='96' height='96' rx='24' fill='url(%23g)'/%3E%3Ctext x='50%25' y='56%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial,sans-serif' font-size='28' font-weight='800' fill='white'%3EIA%3C/text%3E%3C/svg%3E";
+
+            const els = {
+                toolsList: document.getElementById("toolsList"),
+                searchInput: document.getElementById("searchInput"),
+                searchClear: document.getElementById("searchClear"),
+                categoryTabs: document.getElementById("categoryTabs"),
+                resultCount: document.getElementById("resultCount"),
+                activeContext: document.getElementById("activeContext"),
+                clearFilters: document.getElementById("clearFilters"),
+                favoriteFilterBtn: document.getElementById("favoriteFilterBtn"),
+                top5Btn: document.getElementById("top5Btn"),
+                azBtn: document.getElementById("azBtn"),
+                themeToggle: document.getElementById("themeToggle"),
+                scrollTop: document.getElementById("scrollTop")
+            };
+
+            let state = {
+                category: "all",
+                query: "",
+                favoritesOnly: false,
+                top5: false,
+                sortAlpha: true,
+                favorites: readStorage("iaFavoritesUX", {}),
+                usage: readStorage("iaUsageUX", {}),
+                dark: readStorage("iaThemeDarkUX", null)
+            };
+
+            if (state.dark === null) {
+                state.dark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
             }
 
-            function saveUsageCount() {
-                localStorage.setItem('iaUsageCount', JSON.stringify(usageCount));
+            function readStorage(key, fallback) {
+                try {
+                    const raw = localStorage.getItem(key);
+                    return raw ? JSON.parse(raw) : fallback;
+                } catch {
+                    return fallback;
+                }
+            }
+
+            function writeStorage(key, value) {
+                try {
+                    localStorage.setItem(key, JSON.stringify(value));
+                } catch {}
+            }
+
+            function normalizeText(text) {
+                return String(text || "")
+                    .toLowerCase()
+                    .normalize("NFD")
+                    .replace(/[\u0300-\u036f]/g, "");
+            }
+
+            function isGoogleTool(tool) {
+                return googleToolsNames.includes(tool.name);
+            }
+
+            function getCategoryCount(category) {
+                if (category === "all") return tools.length;
+                if (category === "google") return tools.filter(isGoogleTool).length;
+                return tools.filter(tool => tool.category === category).length;
+            }
+
+            function renderCategoryTabs() {
+                const categories = ["all", "chat", "creative", "video", "productivity", "google"];
+                const fragment = document.createDocumentFragment();
+
+                categories.forEach(category => {
+                    const button = document.createElement("button");
+                    button.type = "button";
+                    button.className = "category-btn";
+                    button.dataset.category = category;
+                    button.setAttribute("aria-pressed", category === state.category ? "true" : "false");
+                    button.innerHTML = `<span aria-hidden="true">${categoryIcons[category]}</span> ${categoryNames[category]} <span>(${getCategoryCount(category)})</span>`;
+                    button.addEventListener("click", () => {
+                        state.category = category;
+                        state.top5 = false;
+                        render();
+                    });
+                    fragment.appendChild(button);
+                });
+
+                els.categoryTabs.replaceChildren(fragment);
             }
 
             function applyTheme() {
-                document.body.dataset.theme = isDark ? 'dark' : 'light';
-                if (themeToggle) themeToggle.textContent = isDark ? '☀️' : '🌓';
-                try { localStorage.setItem('iaDarkMode', isDark); } catch {}
+                document.body.dataset.theme = state.dark ? "dark" : "light";
+                els.themeToggle.textContent = state.dark ? "☀" : "☾";
+                els.themeToggle.setAttribute("aria-label", state.dark ? "Ativar tema claro" : "Ativar tema escuro");
+                writeStorage("iaThemeDarkUX", state.dark);
             }
 
-            function incrementUsage(toolName) {
-                usageCount[toolName] = (usageCount[toolName] || 0) + 1;
-                saveUsageCount();
-            }
+            function getFilteredTools() {
+                const query = normalizeText(state.query.trim());
 
-            function toggleFavorite(toolName) {
-                if (favorites[toolName]) {
-                    delete favorites[toolName];
-                } else {
-                    favorites[toolName] = true;
-                }
-                saveFavorites();
-
-                // Atualiza apenas os elementos do card afetado — sem re-renderizar tudo
-                const isFav = !!favorites[toolName];
-                document.querySelectorAll(`.favorite-icon[data-tool="${CSS.escape(toolName)}"]`).forEach(star => {
-                    star.textContent = isFav ? '⭐' : '☆';
-                    star.classList.toggle('active', isFav);
-                    star.setAttribute('aria-label', isFav ? 'Remover dos favoritos' : 'Adicionar aos favoritos');
-                });
-
-                // Se o filtro de favoritos estiver ativo, ainda precisa re-renderizar
-                if (favoriteFilterActive || sortMode === 'favorite') renderList();
-            }
-
-            function filterTools() {
                 return tools.filter(tool => {
-                    // Filtro por categoria
-                    if (activeCategory === 'google') {
-                        if (!googleToolsNames.includes(tool.name)) return false;
-                    } else if (activeCategory !== 'all' && tool.category !== activeCategory) {
-                        return false;
+                    if (state.category === "google" && !isGoogleTool(tool)) return false;
+                    if (state.category !== "all" && state.category !== "google" && tool.category !== state.category) return false;
+                    if (state.favoritesOnly && !state.favorites[tool.name]) return false;
+
+                    if (query) {
+                        const haystack = normalizeText(`${tool.name} ${tool.description} ${tool.useCase} ${categoryNames[tool.category]}`);
+                        if (!haystack.includes(query)) return false;
                     }
-                    // Filtro de busca
-                    if (searchTerm.trim() !== '') {
-                        const term = searchTerm.toLowerCase();
-                        if (!tool.name.toLowerCase().includes(term) && !tool.description.toLowerCase().includes(term)) return false;
-                    }
-                    // Filtro de favoritos
-                    if (favoriteFilterActive && !favorites[tool.name]) return false;
+
                     return true;
                 });
             }
 
-            function sortTools(toolsArray) {
-                let sorted = [...toolsArray];
-                if (top5Mode) {
-                    sorted.sort((a, b) => (usageCount[b.name] || 0) - (usageCount[a.name] || 0));
-                    return sorted.slice(0, 5);
-                } else {
-                    if (sortMode === 'alpha') {
-                        sorted.sort((a, b) => a.name.localeCompare(b.name));
-                    } else if (sortMode === 'favorite') {
-                        sorted.sort((a, b) => {
-                            const aFav = favorites[a.name] ? 1 : 0;
-                            const bFav = favorites[b.name] ? 1 : 0;
-                            if (aFav !== bFav) return bFav - aFav;
-                            return a.name.localeCompare(b.name);
-                        });
-                    }
-                    return sorted;
+            function getSortedTools(list) {
+                const sorted = [...list];
+
+                if (state.top5) {
+                    return sorted
+                        .sort((a, b) => {
+                            const usageDiff = (state.usage[b.name] || 0) - (state.usage[a.name] || 0);
+                            if (usageDiff !== 0) return usageDiff;
+                            return a.rank - b.rank;
+                        })
+                        .slice(0, 5);
                 }
+
+                if (state.sortAlpha) {
+                    sorted.sort((a, b) => a.name.localeCompare(b.name, "pt-BR"));
+                }
+
+                return sorted;
             }
 
-            function handleCardClick(toolName, url) {
-                incrementUsage(toolName);
-                window.open(url, '_blank', 'noopener,noreferrer');
+            function updateControls() {
+                document.querySelectorAll(".category-btn").forEach(button => {
+                    const active = button.dataset.category === state.category;
+                    button.classList.toggle("active", active);
+                    button.setAttribute("aria-pressed", active ? "true" : "false");
+                });
+
+                els.favoriteFilterBtn.classList.toggle("active", state.favoritesOnly);
+                els.favoriteFilterBtn.setAttribute("aria-pressed", state.favoritesOnly ? "true" : "false");
+
+                els.top5Btn.classList.toggle("active", state.top5);
+                els.top5Btn.setAttribute("aria-pressed", state.top5 ? "true" : "false");
+
+                els.azBtn.classList.toggle("active", state.sortAlpha && !state.top5);
+                els.azBtn.setAttribute("aria-pressed", state.sortAlpha && !state.top5 ? "true" : "false");
+
+                els.searchClear.classList.toggle("visible", state.query.length > 0);
+
+                document.body.dataset.mode = state.top5 ? "top5" : "default";
             }
 
-            // SVG data URI usado como fallback local quando a logo não carrega
-            const FALLBACK_LOGO = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' rx='16' fill='%23e5e7eb'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='20' font-weight='600' fill='%236b7280'%3EIA%3C/text%3E%3C/svg%3E";
+            function updateContext(count) {
+                const parts = [];
+
+                if (state.category === "all") {
+                    parts.push("todas as categorias");
+                } else {
+                    parts.push(`categoria ${categoryNames[state.category]}`);
+                }
+
+                if (state.query.trim()) {
+                    parts.push(`busca “${state.query.trim()}”`);
+                }
+
+                if (state.favoritesOnly) {
+                    parts.push("somente favoritas");
+                }
+
+                if (state.top5) {
+                    parts.push("modo Top 5");
+                }
+
+                els.resultCount.textContent = count;
+                els.activeContext.textContent = `Exibindo ${parts.join(" · ")}.`;
+            }
 
             function buildCard(tool, index) {
-                const isFav = !!favorites[tool.name];
-                const delay = Math.min(index * 0.04, 0.4).toFixed(2);
+                const card = document.createElement("article");
+                const isFavorite = !!state.favorites[tool.name];
 
-                const card = document.createElement('div');
-                card.className = 'tool-item';
-                card.dataset.tool = tool.name;
+                card.className = "tool-card";
+                card.tabIndex = 0;
+                card.dataset.name = tool.name;
                 card.dataset.url = tool.url;
-                card.setAttribute('role', 'button');
-                card.setAttribute('tabindex', '0');
-                card.setAttribute('aria-label', `Acessar ${tool.name}`);
-                card.style.animationDelay = `${delay}s`;
-                if (top5Mode) card.dataset.rank = String(index + 1);
+                card.setAttribute("role", "button");
+                card.setAttribute("aria-label", `Acessar ${tool.name}`);
+                card.style.animationDelay = `${Math.min(index * 0.035, 0.35)}s`;
 
-                if (!top5Mode) {
-                    const layout = index % 7 === 0 ? 'hero' : (index % 7 === 4 ? 'wide' : 'default');
-                    card.dataset.layout = layout;
-
-                    if (layout === 'hero') {
-                        const badge = document.createElement('span');
-                        badge.className = 'editorial-badge';
-                        badge.textContent = 'Destaque';
-                        card.appendChild(badge);
-                    }
+                if (state.top5 || tool.recommended) {
+                    card.classList.add("has-badge");
                 }
 
-                if (top5Mode) {
-                    const badge = document.createElement('span');
-                    badge.className = 'top5-badge';
+                if (state.top5) {
+                    const badge = document.createElement("span");
+                    badge.className = "top-badge";
                     badge.textContent = `Top ${index + 1}`;
+                    card.appendChild(badge);
+                } else if (tool.recommended) {
+                    const badge = document.createElement("span");
+                    badge.className = "recommended-badge";
+                    badge.textContent = "Recomendado";
                     card.appendChild(badge);
                 }
 
-                const star = document.createElement('span');
-                star.className = `favorite-icon${isFav ? ' active' : ''}`;
-                star.dataset.tool = tool.name;
-                star.setAttribute('aria-label', isFav ? 'Remover dos favoritos' : 'Adicionar aos favoritos');
-                star.textContent = isFav ? '⭐' : '☆';
+                const top = document.createElement("div");
+                top.className = "card-top";
 
-                const img = document.createElement('img');
+                const identity = document.createElement("div");
+                identity.className = "identity";
+
+                const logoWrap = document.createElement("div");
+                logoWrap.className = "logo-wrap";
+
+                const img = document.createElement("img");
+                img.className = "tool-logo";
                 img.src = tool.logo || FALLBACK_LOGO;
-                img.alt = tool.name;
-                img.className = 'tool-logo';
-                img.loading = 'lazy';
-                img.addEventListener('error', () => { img.src = FALLBACK_LOGO; }, { once: true });
+                img.alt = `Logo ${tool.name}`;
+                img.loading = "lazy";
+                img.addEventListener("error", () => {
+                    img.src = FALLBACK_LOGO;
+                }, { once: true });
 
-                const info = document.createElement('div');
-                info.className = 'tool-info';
+                logoWrap.appendChild(img);
 
-                const header = document.createElement('div');
-                header.className = 'tool-header';
+                const titleArea = document.createElement("div");
+                titleArea.className = "tool-title-area";
 
-                const nameEl = document.createElement('span');
-                nameEl.className = 'tool-name';
-                nameEl.textContent = tool.name;
+                const name = document.createElement("span");
+                name.className = "tool-name";
+                name.textContent = tool.name;
 
-                const catEl = document.createElement('span');
-                catEl.className = 'tool-category';
-                catEl.dataset.cat = tool.category;
-                catEl.textContent = categoryNames[tool.category] || tool.category;
+                const badge = document.createElement("span");
+                badge.className = "category-badge";
+                badge.dataset.cat = tool.category;
+                badge.textContent = categoryNames[tool.category] || tool.category;
 
-                header.append(nameEl, catEl);
+                titleArea.append(name, badge);
+                identity.append(logoWrap, titleArea);
 
-                const desc = document.createElement('div');
-                desc.className = 'tool-description';
-                desc.textContent = tool.description;
+                const favorite = document.createElement("button");
+                favorite.type = "button";
+                favorite.className = `favorite-btn${isFavorite ? " active" : ""}`;
+                favorite.dataset.favorite = tool.name;
+                favorite.setAttribute("aria-label", isFavorite ? `Remover ${tool.name} dos favoritos` : `Adicionar ${tool.name} aos favoritos`);
+                favorite.textContent = isFavorite ? "★" : "☆";
 
-                info.append(header, desc);
+                top.append(identity, favorite);
 
-                const action = document.createElement('div');
-                action.className = 'tool-action';
+                const description = document.createElement("p");
+                description.className = "tool-description";
+                description.textContent = tool.description;
 
-                const btn = document.createElement('button');
-                btn.className = 'tool-link';
-                btn.setAttribute('aria-label', `Acessar ${tool.name} (abre em nova aba)`);
-                btn.textContent = 'Acessar ↗';
+                const useCase = document.createElement("div");
+                useCase.className = "use-case";
+                useCase.innerHTML = `<span aria-hidden="true">▸</span><span><strong>Indicação:</strong> ${tool.useCase}</span>`;
 
-                action.appendChild(btn);
-                card.append(star, img, info, action);
+                const footer = document.createElement("div");
+                footer.className = "card-footer";
+
+                const openButton = document.createElement("button");
+                openButton.type = "button";
+                openButton.className = "open-btn";
+                openButton.textContent = "Acessar ferramenta ↗";
+                openButton.setAttribute("aria-label", `Acessar ${tool.name} em nova aba`);
+
+                footer.appendChild(openButton);
+                card.append(top, description, useCase, footer);
+
                 return card;
             }
 
-            function renderList() {
-                const filtered = filterTools();
-                const sorted = sortTools(filtered);
-                resultCountSpan.textContent = sorted.length;
+            function renderTools() {
+                const filtered = getFilteredTools();
+                const sorted = getSortedTools(filtered);
 
-                if (sorted.length === 0) {
-                    const empty = document.createElement('div');
-                    empty.className = 'no-results';
-                    const icon = document.createElement('span');
-                    icon.className = 'no-results-icon';
-                    icon.textContent = '🔍';
-                    const msg = document.createElement('p');
-                    msg.textContent = 'Nenhuma ferramenta encontrada.';
-                    const hint = document.createElement('p');
-                    hint.style.cssText = 'font-size:0.9rem;margin-top:8px;opacity:0.7';
-                    hint.textContent = 'Tente outro termo ou limpe os filtros.';
-                    empty.append(icon, msg, hint);
-                    toolsListEl.replaceChildren(empty);
+                updateContext(sorted.length);
+
+                if (!sorted.length) {
+                    const empty = document.createElement("div");
+                    empty.className = "no-results";
+                    empty.innerHTML = `
+                        <span class="no-results-icon" aria-hidden="true">⌕</span>
+                        <h2>Nenhuma ferramenta encontrada</h2>
+                        <p>Tente uma palavra mais simples, selecione outra categoria ou limpe os filtros.</p>
+                    `;
+                    els.toolsList.replaceChildren(empty);
                     return;
                 }
 
-                const frag = document.createDocumentFragment();
-                sorted.forEach((tool, index) => frag.appendChild(buildCard(tool, index)));
-                toolsListEl.replaceChildren(frag);
+                const fragment = document.createDocumentFragment();
+                sorted.forEach((tool, index) => fragment.appendChild(buildCard(tool, index)));
+                els.toolsList.replaceChildren(fragment);
             }
 
-            // Event delegation — registrado uma única vez, fora do renderList
-            toolsListEl.addEventListener('click', (e) => {
-                const star = e.target.closest('.favorite-icon');
-                if (star) {
-                    e.stopPropagation();
-                    toggleFavorite(star.dataset.tool);
+            function render() {
+                renderCategoryTabs();
+                updateControls();
+                renderTools();
+            }
+
+            function toggleFavorite(toolName) {
+                if (state.favorites[toolName]) {
+                    delete state.favorites[toolName];
+                } else {
+                    state.favorites[toolName] = true;
+                }
+
+                writeStorage("iaFavoritesUX", state.favorites);
+                render();
+            }
+
+            function openTool(toolName, url) {
+                state.usage[toolName] = (state.usage[toolName] || 0) + 1;
+                writeStorage("iaUsageUX", state.usage);
+                window.open(url, "_blank", "noopener,noreferrer");
+            }
+
+            let searchTimer = null;
+
+            els.searchInput.addEventListener("input", event => {
+                state.query = event.target.value;
+                els.searchClear.classList.toggle("visible", state.query.length > 0);
+
+                clearTimeout(searchTimer);
+                searchTimer = setTimeout(render, 140);
+            });
+
+            els.searchClear.addEventListener("click", () => {
+                state.query = "";
+                els.searchInput.value = "";
+                render();
+                els.searchInput.focus();
+            });
+
+            els.favoriteFilterBtn.addEventListener("click", () => {
+                state.favoritesOnly = !state.favoritesOnly;
+                state.top5 = false;
+                render();
+            });
+
+            els.top5Btn.addEventListener("click", () => {
+                state.top5 = !state.top5;
+                render();
+            });
+
+            els.azBtn.addEventListener("click", () => {
+                state.sortAlpha = true;
+                state.top5 = false;
+                render();
+            });
+
+            els.clearFilters.addEventListener("click", () => {
+                state.category = "all";
+                state.query = "";
+                state.favoritesOnly = false;
+                state.top5 = false;
+                state.sortAlpha = true;
+                els.searchInput.value = "";
+                render();
+            });
+
+            els.themeToggle.addEventListener("click", () => {
+                state.dark = !state.dark;
+                applyTheme();
+            });
+
+            els.toolsList.addEventListener("click", event => {
+                const favorite = event.target.closest("[data-favorite]");
+                if (favorite) {
+                    event.stopPropagation();
+                    toggleFavorite(favorite.dataset.favorite);
                     return;
                 }
-                const card = e.target.closest('.tool-item');
+
+                const card = event.target.closest(".tool-card");
                 if (card) {
-                    handleCardClick(card.dataset.tool, card.dataset.url);
+                    openTool(card.dataset.name, card.dataset.url);
                 }
             });
 
-            toolsListEl.addEventListener('keydown', (e) => {
-                if (e.key !== 'Enter' && e.key !== ' ') return;
-                const card = e.target.closest('.tool-item');
+            els.toolsList.addEventListener("keydown", event => {
+                if (event.key !== "Enter" && event.key !== " ") return;
+
+                const card = event.target.closest(".tool-card");
                 if (card) {
-                    e.preventDefault();
-                    handleCardClick(card.dataset.tool, card.dataset.url);
+                    event.preventDefault();
+                    openTool(card.dataset.name, card.dataset.url);
                 }
             });
 
-            function setActiveTab(category) {
-                tabs.forEach(tab => {
-                    tab.classList.toggle('active', tab.dataset.category === category);
-                });
-            }
+            document.addEventListener("keydown", event => {
+                const activeTag = document.activeElement && document.activeElement.tagName;
+                const typing = activeTag === "INPUT" || activeTag === "TEXTAREA";
 
-            function setActiveSort(mode) {
-                sortBtns.forEach(btn => {
-                    if (btn.dataset.sort === mode) {
-                        btn.classList.add('active');
-                    } else {
-                        btn.classList.remove('active');
-                    }
-                });
-            }
-
-            function setTop5Mode(active) {
-                top5Mode = active;
-                document.body.dataset.top5 = active ? 'true' : 'false';
-                top5Btn.classList.toggle('active', active);
-                sortBtns.forEach(btn => {
-                    btn.style.opacity = active ? '0.5' : '1';
-                    btn.style.pointerEvents = active ? 'none' : 'auto';
-                });
-                renderList();
-            }
-
-            function updateFavoriteFilterButton() {
-                const favBtn = document.querySelector('.sort-btn[data-sort="favorite"]');
-                if (favBtn) {
-                    favBtn.classList.toggle('active', favoriteFilterActive);
+                if (event.key === "/" && !typing) {
+                    event.preventDefault();
+                    els.searchInput.focus();
                 }
-            }
 
-            // ---------- EVENTOS ----------
-            tabs.forEach(tab => {
-                tab.addEventListener('click', (e) => {
-                    activeCategory = e.currentTarget.dataset.category;
-                    setActiveTab(activeCategory);
-                    renderList();
-                });
-            });
-
-            let searchDebounceTimer = null;
-            searchInput.addEventListener('input', (e) => {
-                searchTerm = e.target.value;
-                searchClear.classList.toggle('visible', searchTerm.length > 0);
-                clearTimeout(searchDebounceTimer);
-                searchDebounceTimer = setTimeout(renderList, 200);
-            });
-
-            searchClear.addEventListener('click', () => {
-                searchInput.value = '';
-                searchTerm = '';
-                searchClear.classList.remove('visible');
-                renderList();
-                searchInput.focus();
-            });
-
-            clearBtn.addEventListener('click', () => {
-                searchInput.value = '';
-                searchTerm = '';
-                searchClear.classList.remove('visible');
-                activeCategory = 'all';
-                favoriteFilterActive = false;
-                setActiveTab('all');
-                if (top5Mode) setTop5Mode(false);
-                updateFavoriteFilterButton();
-                renderList();
-            });
-
-            sortBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    if (top5Mode) setTop5Mode(false);
-
-                    const sortValue = btn.dataset.sort;
-
-                    if (sortValue === 'alpha') {
-                        sortMode = 'alpha';
-                        setActiveSort('alpha');
-                        renderList();
-                    } else if (sortValue === 'favorite') {
-                        favoriteFilterActive = !favoriteFilterActive;
-                        if (favoriteFilterActive && sortMode === 'favorite') {
-                            sortMode = 'alpha';
-                            setActiveSort('alpha');
-                        }
-                        updateFavoriteFilterButton();
-                        renderList();
-                    }
-                });
-            });
-
-            top5Btn.addEventListener('click', () => {
-                setTop5Mode(!top5Mode);
-            });
-
-            // Atalho: tecla / coloca foco na busca
-            document.addEventListener('keydown', (e) => {
-                if (e.key === '/' && document.activeElement !== searchInput) {
-                    e.preventDefault();
-                    searchInput.focus();
+                if (event.key === "Escape") {
+                    state.query = "";
+                    els.searchInput.value = "";
+                    render();
                 }
             });
 
-            function init() {
-                applyTheme();
-                document.body.dataset.editorial = 'true';
-                setActiveTab('all');
-                setActiveSort('alpha');
-                setTop5Mode(false);
-                favoriteFilterActive = false;
-                updateFavoriteFilterButton();
-
-                const allTab = document.querySelector('.tab[data-category="all"]');
-                if (allTab) allTab.textContent = `Todas (${tools.length})`;
-                tabs.forEach(tab => {
-                    const cat = tab.dataset.category;
-                    if (cat === 'all') return;
-                    let count;
-                    if (cat === 'google') {
-                        count = tools.filter(t => googleToolsNames.includes(t.name)).length;
-                    } else {
-                        count = tools.filter(t => t.category === cat).length;
-                    }
-                    tab.textContent = `${categoryNames[cat] || cat} (${count})`;
-                });
-                renderList();
-            }
-
-            themeToggle.addEventListener('click', () => {
-                isDark = !isDark;
-                applyTheme();
-            });
-
-            // Scroll to top
-            window.addEventListener('scroll', () => {
-                scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+            window.addEventListener("scroll", () => {
+                els.scrollTop.classList.toggle("visible", window.scrollY > 360);
             }, { passive: true });
 
-            scrollTopBtn.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+            els.scrollTop.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: "smooth" });
             });
 
-            init();
-
-            // ===== ADAPTAÇÃO DINÂMICA POR TAMANHO DE TELA =====
-            // Usa ResizeObserver no container (mais preciso que media queries,
-            // pois mede o elemento real e não a viewport inteira).
-            const BREAKPOINTS = [
-                { maxWidth: 380,  cols: 1, label: 'xs'   },  // smartphones muito pequenos
-                { maxWidth: 540,  cols: 1, label: 'sm'   },  // smartphones
-                { maxWidth: 720,  cols: 2, label: 'md'   },  // smartphones grandes / tablets portrait
-                { maxWidth: 960,  cols: 2, label: 'lg'   },  // tablets landscape
-                { maxWidth: 1200, cols: 3, label: 'xl'   },  // notebooks
-                { maxWidth: Infinity, cols: 4, label: 'xxl' } // desktops / telas grandes
-            ];
-
-            function applyScreenLayout(containerWidth) {
-                const bp = BREAKPOINTS.find(b => containerWidth <= b.maxWidth);
-                const root = document.documentElement;
-
-                // Ajusta o número de colunas do grid via variável CSS
-                root.style.setProperty('--grid-cols', bp.cols);
-
-                // Marca o breakpoint no body para CSS e JS poderem reagir
-                document.body.dataset.screen = bp.label;
-            }
-
-            // Executa imediatamente e a cada redimensionamento
-            const container = document.querySelector('.container');
-            applyScreenLayout(container.offsetWidth);
-
-            const resizeObserver = new ResizeObserver(entries => {
-                for (const entry of entries) {
-                    applyScreenLayout(entry.contentRect.width);
-                }
-            });
-            resizeObserver.observe(container);
-            // ======================================================
-
+            applyTheme();
+            render();
         })();
     </script>
 </body>
